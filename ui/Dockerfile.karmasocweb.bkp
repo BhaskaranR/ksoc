@@ -1,0 +1,20 @@
+FROM node:8.0.0
+
+ARG WORKSPACE=/usr/src/app/karmasoc-web
+
+# Create app directory
+RUN mkdir -p $WORKSPACE
+RUN mkdir -p $WORKSPACE/config
+RUN mkdir -p $WORKSPACE/logs
+
+COPY ./process.json $WORKSPACE
+COPY ./config $WORKSPACE/config
+COPY ./karmasoc-web $WORKSPACE
+
+WORKDIR $WORKSPACE
+
+RUN npm install
+
+EXPOSE 4201
+
+CMD ["npm","start"]

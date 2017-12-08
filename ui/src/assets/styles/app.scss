@@ -1,0 +1,284 @@
+@import "scss/material.variables";
+@import "scss/material.themes";
+@import "scss/mixins/bi-app/bi-app-ltr";
+// Core Variables and Mixins
+@import "scss/app.variables";
+@import "scss/mixins";
+// Core Styles
+@import "scss/core";
+@import "scss/material";
+@import "scss/utilities/utilities";
+@import 'scss/docs/api-theme';
+@import 'scss/docs/markdown-theme';
+.app {
+    overflow: hidden !important;
+}
+
+.mat-drawer {
+    overflow: hidden;
+    width: 15rem !important;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12)!important;
+}
+
+mat-list-item .relative mat-icon {
+    margin-right: 24px;
+}
+
+mat-list-item .relative span {
+    padding-top: 3px;
+    font-size: .875rem!important;
+}
+
+mat-list-item .relative mat-icon {
+    margin-right: 14px !important;
+}
+
+.mat-nav-list a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.mat-list-item a:focus,
+a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    outline: 0;
+    color: #4CAF50 !important;
+}
+
+.mat-list-item a:active {
+    color: #4CAF50 !important;
+}
+
+.mat-dialog-container {
+    max-width: none!important;
+}
+
+.mat-nav-list {
+    padding-top: 0px !important;
+}
+
+.mat-toolbar.mat-primary,
+.header-md-toolbar {
+    background: #4CAF50 !important;
+}
+
+body.pace-done {
+    // overflow: hidden;
+    background: #fff !important;
+}
+
+.mat-sidenav-container {
+    width: 100%;
+    max-width: 100%;
+    // height: calc(100vh - 1px);
+}
+
+.custom-overlay-pane-class_1 {
+    width: 40%;
+    height: 90%;
+}
+
+.custom-overlay-pane-class {
+    width: 40%;
+    height: 55%;
+}
+
+.custom-overlay-usergrp-class {
+    width: 20%;
+    height: 50%;
+}
+
+.cdk-overlay-dark-backdrop {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.filterimagepane-class {
+    max-width: none;
+    width: 100vw;
+    height: 100vh;
+}
+
+@media ($mat-xsmall) and (orientation: portrait) {
+    .custom-overlay-pane-class,
+    .custom-overlay-pane-class_1 {
+        max-width: none;
+        width: 100vw;
+        height: 100vh;
+    }
+    .custom-overlay-usergrp-class {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+@media ($mat-small) and (orientation: landscape) {
+    .custom-overlay-pane-class,
+    .custom-overlay-pane-class_1 {
+        max-width: none;
+        width: 100vw;
+        height: 100vh;
+    }
+    .custom-overlay-usergrp-class {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+.dialog {
+    max-width: none;
+    width: 35vw;
+    height: 60vh;
+}
+
+.pac-container {
+    margin-top: -60px;
+}
+
+.custom-overlay-pane-class .mat-dialog-container,
+.custom-overlay-pane-class_1 .mat-dialog-container {
+    height: auto !important;
+}
+
+.closeImage .mat-icon-button {
+    position: relative;
+    top: 30px;
+    left: -16px;
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+}
+
+// md-icon {
+//     color: #757575;
+// }
+.app-inner-content {
+    overflow: hidden !important;
+    position: absolute;
+    width: 100%;
+}
+
+// @media screen and (max-width: 960px) {
+//     .app-inner-content {
+//         width: 100%;
+//     }
+// }
+.custom-overlay-pane-class {
+    height: 75% !important;
+}
+
+.dialog {
+    width: 50% !important;
+}
+
+.custom-overlay-userloc-class .mat-dialog-container {
+    padding: 0px!important;
+}
+
+.mat-input-placeholder {
+    top: 2em !important;
+}
+
+.mat-dialog-container {
+    max-width: none !important;
+    height: fit-content !important;
+}
+
+.mat-input-placeholder-wrapper {
+    top: -1.2em !important;
+}
+
+input.mat-input-element {
+    margin-top: 0.15em !important;
+}
+
+button {
+    z-index: 1;
+}
+
+// .mat-sidenav-container
+// {
+//     margin-top: 4em;
+// }
+.filterimagepane-class .mat-dialog-container {
+    width: 60%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: auto;
+    padding: 0 !important;
+}
+
+.mat-horizontal-stepper-header {
+    height: 50px !important;
+}
+
+.mat-stepper-horizontal-line {
+    margin: 0 !important;
+}
+
+.mat-horizontal-content-container {
+    padding: 0 !important;
+}
+
+.mat-step-icon .mat-icon {
+    color: #fff;
+}
+
+.mat-step-label {
+    min-width: 100% !important;
+}
+
+.dialog .mat-dialog-container {
+    padding: 0 !important;
+}
+
+.invite-friends .mat-dialog-container {
+    padding: 0 !important;
+    min-width: 400px;
+}
+
+@media screen and (max-width: 960px) {
+    .filterimagepane-class .mat-dialog-container {
+        width: 100%;
+    }
+    .dialog {
+        width: 70% !important;
+    }
+    .app-inner-content {
+        position: relative !important;
+        width: 100%;
+        margin-top: 55px;
+    }
+    .mat-toolbar.mat-primary,
+    .header-md-toolbar {
+        background: #4CAF50 !important;
+        // position: absolute;
+        // top: 0;
+        overflow: hidden;
+        z-index: 1;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .dialog {
+        width: 100% !important;
+    }
+}
+
+// @media (max-width: 960px) and (orientation: landscape){
+//     .app-inner-sidenav {
+//         margin-top: 0; 
+//     } 
+// }
+// @media (max-width: 600px) and (orientation: portrait){
+//     .app-inner-sidenav {
+//         margin-top: 0;
+//     }
+// }

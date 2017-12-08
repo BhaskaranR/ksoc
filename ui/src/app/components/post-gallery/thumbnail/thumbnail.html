@@ -1,0 +1,9 @@
+<div #container class="g-thumb-container" [ngStyle]="contStyle">
+    <div class="g-thumbs" [style.transform]="translateThumbs()">
+        <div class="g-thumb" *ngFor="let post of state.posts; let i = index" [class.g-thumb-current]="i === state.currIndex" [style.width.px]="config.thumbnails.width" [style.height.px]="config.thumbnails.height">
+            <!-- commented the code -->
+            <!--post-item [item]="post" [viewMode]="'FEEDVIEW'" [expandedView]="expandedView" [@postEnter]='startup' (itemClickedEvent)="handleItemClick($event)" (itemAnimationDoneEvent)="handleItemAnimationDone($event)">
+            </post-item-->
+        </div>
+    </div>
+</div>

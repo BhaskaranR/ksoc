@@ -1,0 +1,19 @@
+<a *ngIf="!canEdit &&  showLetter && (!user.images || !user.images || user.images.small == null ||  user.images.small =='')" (click)="avatarClick()">
+    <app-avatar-letter [data]="avatarDataCircle"></app-avatar-letter>
+</a>
+
+<a class="editableavatar" *ngIf="canEdit &&  showLetter && (!user.images || !user.images || user.images.small == null ||  user.images.small =='')" (click)="UploadClick($event)">
+    <app-avatar-letter [data]="avatarDataCircle"></app-avatar-letter>
+    <mat-icon>create</mat-icon>
+</a>
+
+<a class="editableavatar" *ngIf="canEdit && (user.images && user.images.small && user.images.small !== null && user.images.small !=='')" (click)="UploadClick($event)">
+    <img [src]="thumbnailImage">
+    <mat-icon>create</mat-icon>
+</a>
+
+<a *ngIf="!canEdit && (user.images && user.images.small && user.images.small !== null && user.images.small !=='')" (click)="avatarClick()">
+    <img class="profile_image" mat-card-avatar [src]="thumbnailImage">
+</a>
+
+<input *ngIf="canEdit" type="file" #fileInput id="fileInput" ng2FileSelect [uploader]="uploader" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|images/*" />

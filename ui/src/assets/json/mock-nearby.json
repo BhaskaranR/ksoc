@@ -1,0 +1,98 @@
+ [
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.86879,
+               "lng" : 151.194217
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "21a0b251c9b8392186142c798263e289fe45b4aa",
+         "name" : "Rhythmboat Cruises",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 426,
+               "html_attributions" : [
+                  "\u003ca href=\"https://www.google.com/maps/views/profile/104066891898402903288\"\u003eRhythmboat Cruises\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRdAAAA-YL_I ...photo_reference truncated in this example",
+               "width" : 640
+            }
+         ],
+         "place_id" : "ChIJyWEHuEmuEmsRm9hTkapTCrk",
+         "reference" : "CnRmAAAAvQl ...reference truncated in this example",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "Pyrmont Bay Wharf (Near Australia Maritime Museum), Pyrmont, NSW 2009"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.867591,
+               "lng" : 151.201196
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "a97f9fb468bcd26b68a23072a55af82d4b325e0d",
+         "name" : "Australian Cruise Group",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 1331,
+               "html_attributions" : [
+                  "\u003ca href=\"https://www.google.com/maps/views/profile/110751364053842618118\"\u003eAustralian Cruise Group\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRdAAAAtEo ...photo_reference truncated in this example",
+               "width" : 2000
+            }
+         ],
+         "place_id" : "ChIJrTLr-GyuEmsRBfy61i59si0",
+         "reference" : "CnRqAAAAFbuk ...reference truncated in this example",
+         "scope" : "GOOGLE",
+         "types" : [
+            "restaurant",
+            "travel_agency",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "vicinity" : "32 The Promenade, King Street Wharf 5, Sydney"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.870943,
+               "lng" : 151.190311
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png",
+         "id" : "e644f7f34cf875b9919c6548f1b721947362850a",
+         "name" : "Lunch Cruise with Jazz on Sydney Harbour",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 292,
+               "html_attributions" : [
+                  "\u003ca href=\"https://www.google.com/maps/views/profile/105423912060796272053\"\u003eFrom a Google User\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRdAAAAR4bq ...photo_reference truncated in this example",
+               "width" : 438
+            }
+         ],
+         "place_id" : "ChIJLfySpTOuEmsRPCRKrzl8ZEY",
+         "reference" : "CoQBewAAAFd2 ...reference truncated in this example",
+         "scope" : "GOOGLE",
+         "types" : [ "bar", "restaurant", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "37 Bank St, Pyrmont"
+      }
+   ]

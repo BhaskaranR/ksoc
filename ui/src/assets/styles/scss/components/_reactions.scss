@@ -1,0 +1,30 @@
+@import "../material.variables";
+$reactions-target-height: 22px;
+$reactions-font-size: 10px;
+$reactions-vertical-padding: ($reactions-target-height - $reactions-font-size) / 2;
+@mixin reactions-theme($theme) {
+    .reactions {
+        background: mat-color($mat-grey, 700, 0.9);
+    }
+    .material-icons.mat-dark {
+        color: rgba(0, 0, 0, 0.54);
+    }
+    .material-icons.mat-dark.mat-inactive {
+        color: rgba(0, 0, 0, 0.26);
+    }
+    .material-icons.mat-light {
+        color: rgba(255, 255, 255, 1);
+    }
+    .material-icons.mat-light.md-inactive {
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+@mixin reactions-typography($config) {
+    .reactions {
+        font-family: mat-font-family($config);
+        font-size: $reactions-font-size;
+        padding-top: $reactions-vertical-padding;
+        padding-bottom: $reactions-vertical-padding;
+    }
+}

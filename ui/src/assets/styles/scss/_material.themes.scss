@@ -1,0 +1,9 @@
+// Default Theme
+@import '../../app/components/emojipicker/emojipicker-theme.scss';
+@include angular-material-theme($theme);
+@include mat-emojipicker-theme($theme);
+.app-dark {
+    @include angular-material-theme($dark-theme);
+}
+
+$background: map-get($theme, background);

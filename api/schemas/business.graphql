@@ -1,0 +1,23 @@
+type SubCategory {
+    name: String!
+}
+
+type Category{
+    name: String!
+    category: String!
+    subCategoty: [Subcategory]
+}
+
+type Business {
+    user: User
+    referredBy: User,
+    bizName: String!,
+    category: Category,
+    subCategory: Subcategory,
+    zipcode: Int!,
+    address: String!
+    title: String!,
+    website: String,
+    geotag: String,
+}
+

@@ -1,0 +1,30 @@
+.header-mat-toolbar{
+  background: #3F51B5;
+  color: #fff;
+  p{
+    font-weight: 600;
+    padding-left: 0.5em;
+  }
+  mat-icon{
+    color: #fff;
+    font-size: large;
+  }
+}
+form{
+  padding: 0 0 2em 0;
+}
+mat-form-field{
+  width: 100% !important;
+}
+img{
+  width: 65px;
+  padding: 1em;
+}
+.push-top-sm{
+  margin-left: 7px;
+  margin-top: 6px;
+}
+.btn-invite button{
+  width: 100%;
+  margin-top: 1em;
+}

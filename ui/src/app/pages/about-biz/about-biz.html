@@ -1,0 +1,150 @@
+<div fxLayout="column" class="about_page" *ngIf="biz$ | async; let biz">
+    <div class="about_info_con-wrapper" fxLayoutAlign="space-around center">
+        <div class="about_info_con" fxFlex="65%" fxFlex.md="80%" fxFlex.sm="90%" fxFlex.xs="100%" fxLayout="column" fxLayoutGap="10px">
+
+            <mat-card class="cover_photo_con">
+                <div class="cover_photo_con_bg" mat-card-image style="background-image: url('assets/images/background-image.jpg');">
+                    <mat-icon class="update_icon_1">photo_camera</mat-icon>
+                    <div class="image_icon_con-image" fxLayout="row" fxLayoutAlign="center center">
+                        <app-avatar fxFlexAlign="center" [user]="biz" [canEdit]="true" [imageSize]="80" [showLetter]="true">
+                        </app-avatar>
+                        <!--img mat-card-avatar class="image_icon_con" src="https://lh3.googleusercontent.com/-feWckKvmys4/AAAAAAAAAAI/AAAAAAAAAOM/P0CFbUymX4U/s240-p-rw-no/photo.jpg"-->
+                    </div>
+                </div>
+                <mat-card-content>
+                    <mat-icon (click)="openUpdateImagePopup()" class="edit_profile_icon">create</mat-icon>
+                </mat-card-content>
+                <mat-card-content class="username_con">
+                    <mat-card-title class="username">
+                        {{biz.title}}
+                    </mat-card-title>
+                </mat-card-content>
+            </mat-card>
+
+            <div class="info_wrapper" fxLayout.xs="column" fxLayout="row" fxLayoutGap="10px" fxFlex="100">
+                <div fxLayout="column" fxLayoutGap="10px" fxFlex="50">
+
+                    <mat-card class="cover_photo_con">
+                        <div fxlayout="row" fxLayoutAlign="space-between center">
+                            <mat-card-title class="info_title" fxFlex>Personal contact info</mat-card-title>
+                            <mat-icon class="create_icon" (click)="openProfileWorkContactInfoPopup()">create</mat-icon>
+                        </div>
+
+                        <mat-list>
+                            <mat-list-item class="usr_details">
+                                <mat-icon mat-list-icon class="info_list_icon">phone</mat-icon>
+                                <h4 mat-line>09095685594</h4>
+                                <p mat-line>work</p>
+                            </mat-list-item>
+                        </mat-list>
+
+                        <mat-list>
+                            <mat-list-item class="usr_details">
+                                <mat-icon mat-list-icon class="info_list_icon">phone</mat-icon>
+                                <h4 mat-line>09095685594</h4>
+                                <p mat-line>Office</p>
+                            </mat-list-item>
+                        </mat-list>
+
+                        <mat-list>
+                            <mat-list-item class="usr_details">
+                                <mat-icon mat-list-icon class="info_list_icon">email</mat-icon>
+                                <h4 mat-line>paulsons@neoito.com</h4>
+                                <!-- <p mat-line>work</p> -->
+                            </mat-list-item>
+                        </mat-list>
+
+                        <mat-list>
+                            <mat-list-item class="usr_details">
+                                <mat-icon mat-list-icon class="info_list_icon">room</mat-icon>
+                                <h4 mat-line>address</h4>
+                                <!-- <p mat-line>address</p> -->
+                            </mat-list-item>
+                        </mat-list>
+                        <hr style="margin-top: 1em;" />
+                        <mat-card-actions>
+                            <button class="action-footer-icon" mat-icon-button [matMenuTriggerFor]="menu">
+                             <mat-icon>public</mat-icon> 
+                             <span>Public</span>
+                           </button>
+                            <mat-menu #menu="matMenu">
+                                <h6 style="padding:1em;">Who can see this?</h6>
+                                <button mat-menu-item>
+                                      <mat-icon>public</mat-icon>
+                               <span>Public</span>
+                             </button>
+                                <button mat-menu-item>
+                                      <mat-icon>lock</mat-icon>
+                               <span>Private</span>
+                             </button>
+                                <button mat-menu-item>
+                                      <mat-icon>group</mat-icon>
+                               <span>Friends</span>
+                             </button>
+                            </mat-menu>
+                        </mat-card-actions>
+                    </mat-card>
+
+                </div>
+                <div fxLayout="column" fxLayoutGap="10px" fxFlex="50">
+
+                    <mat-card class="cover_photo_con" style="padding-bottom: 1em;">
+                        <div fxlayout="row" fxLayoutAlign="space-between center">
+                            <mat-card-title class="info_title" fxFlex>Sites</mat-card-title>
+                            <mat-icon class="create_icon" (click)="openUpdateSiteUrlPopup()">create</mat-icon>
+                        </div>
+
+                        <mat-card-content class="des-con" style="padding: 5px;">
+                            <div fxlayout="row" fxLayoutAlign="space-between center">
+                                <mat-card-title class="des-con-title" fxFlex>Customised URLs</mat-card-title>
+                                <mat-icon class="des-con-subtitle" matTooltip="Public">public</mat-icon>
+                            </div>
+                        </mat-card-content>
+
+                        <mat-card-content class="des-con" fxlayout="row" fxLayoutAlign="start center">
+                            <div>
+                                <mat-icon style="padding: 10px;">public</mat-icon>
+                            </div>
+                            <div class="page_url_edit">
+                                <mat-card-title fxFlex style="color:#000 !important;">Youtube</mat-card-title>
+                                <mat-card-subtitle class="des-con-subtitle">
+                                    <a href="www.youtube.co">youtube.com/username </a>
+                                </mat-card-subtitle>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+
+                    <mat-card class="cover_photo_con" style="padding-bottom: 1em;">
+                        <div fxlayout="row" fxLayoutAlign="space-between center">
+                            <mat-card-title class="info_title" fxFlex>Places</mat-card-title>
+                            <mat-icon class="create_icon" (click)="openUpdatePlacePopup()">create</mat-icon>
+                        </div>
+
+                        <mat-card-content class="des-con">
+                            <div>
+                                <mat-card-title class="des-con-title" fxFlex>Currently</mat-card-title>
+                            </div>
+                            <mat-card-subtitle class="des-con-subtitle">Trivandrum</mat-card-subtitle>
+                        </mat-card-content>
+                        <hr style="margin-top: 1em;" />
+                        <mat-card-actions>
+                            <button class="action-footer-icon" mat-icon-button [matMenuTriggerFor]="menu">
+                                 <mat-icon>public</mat-icon> 
+                                 <span>Public</span>
+                               </button>
+                        </mat-card-actions>
+                    </mat-card>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div fxlayout="row" fxLayoutAlign="end center" style="position:fixed;right:5em;
+bottom:2em;">
+    <button mat-fab class="fab-bottom-right" matTooltip="Add Info" (click)="openUpdateAddInfoPopup()">
+      <mat-icon style="color:#fff;">add</mat-icon>
+</button>
+</div>

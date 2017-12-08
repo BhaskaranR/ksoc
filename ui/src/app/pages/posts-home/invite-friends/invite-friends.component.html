@@ -1,0 +1,35 @@
+<div>
+    <div class="header-mat-toolbar" fxLayout="row" fxLayoutAlign="space-between center">
+        <p>Invite your friends</p>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <img src="assets/images/icons/icon.png">
+        <p>
+            Invite your friends to join <b>KARMASOC</b> now.
+        </p>
+        <div>
+            <form [formGroup]="form" #loginForm="ngForm">
+                <div fxLayout="row" style="margin-top: 2em;">
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="mail" placeholder="Email" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-raised-button color="primary" class="push-top-sm" type="submit">Invite</button>
+                    </div>
+                </div>
+                <div class="btn-invite">
+                    <button mat-raised-button color="warn">Invite Contact From Gmail</button>
+                </div>
+                <div class="btn-invite">
+                    <button mat-raised-button color="accent">Invite Contact From Facebook</button>
+                </div>
+                <div class="btn-invite">
+                    <button mat-raised-button color="primary">Invite Contact From Twitter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

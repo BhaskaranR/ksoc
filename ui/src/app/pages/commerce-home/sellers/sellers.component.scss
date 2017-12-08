@@ -1,0 +1,102 @@
+:host {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+}
+
+nav {
+    margin-top: 8px;
+    background: #fff;
+}
+
+a {
+    color: #000 !important;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: initial;
+    text-transform: uppercase;
+}
+
+.demo-tab-group {
+    border: 1px solid #e8e8e8;
+    .unicorn-dark-theme & {
+        border-color: #464646;
+    }
+}
+
+mat-tab-label {
+    height: 48px!important;
+}
+
+.mat-tab-label {
+    height: 48px!important;
+}
+
+mat-sidenav-container {
+    min-height: 100vh;
+}
+
+// .profile_sidenav {
+//     margin-top: 0 !important;
+//     position: fixed;
+// }
+.ecommerce-item {
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    // margin: 1em;
+}
+
+.pl-0 img {
+    width: 100px;
+    height: 100px;
+}
+
+.pl-0 p {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-left: 10px;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.mat-text {
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.mat-text-proname {
+    font-weight: 700;
+    font-size: inherit;
+}
+
+.mat-text-free {
+    color: #4CAF50;
+    font-weight: 600;
+    font-size: smaller;
+}
+
+.mat-text-free-by {
+    color: #4CAF50;
+    font-weight: 600;
+    font-size: smaller;
+    position: relative;
+    top: -5px;
+}
+
+.details-text {
+    height: 30px;
+    font-size: 12px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-cart {
+    padding-bottom: 1em;
+}

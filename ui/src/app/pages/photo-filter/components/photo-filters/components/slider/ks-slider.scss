@@ -1,0 +1,184 @@
+$ease-in-out-curve-function: cubic-bezier(0.35, 0, 0.25, 1) !default;
+$swift-ease-out-duration: 400ms !default;
+$swift-ease-out-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+$swift-ease-in-out-duration: 500ms !default;
+$swift-ease-in-out-timing-function: $ease-in-out-curve-function !default;
+$ks-slider-thickness: 48px !default;
+$ks-slider-min-size: 100% !default;
+$ks-slider-padding: 8px !default;
+$ks-slider-track-height: 2px !default;
+$ks-slider-thumb-size: 14px !default;
+$ks-slider-thumb-default-scale: 0.7 !default;
+$ks-slider-thumb-focus-scale: 1 !default;
+$ks-slider-thumb-arrow-height: 12px !default;
+$ks-slider-thumb-arrow-width: 28px !default;
+$ks-slider-thumb-label-size: 28px !default;
+$ks-slider-thumb-label-top: ($ks-slider-thickness / 2) - ($ks-slider-thumb-default-scale * $ks-slider-thumb-size / 2) - $ks-slider-thumb-label-size - $ks-slider-thumb-arrow-height+10px !default;
+@function center-vertically($containerHeight, $itemHeight) {
+    @return ($containerHeight / 2) - ($itemHeight / 2);
+}
+
+@mixin slider-thumb-position($width: $ks-slider-thumb-size, $height: $ks-slider-thumb-size) {
+    position: absolute;
+    top: center-vertically($ks-slider-thickness, $height);
+    // This makes it so that the center of the thumb aligns with where the click was.
+    // This is not affected by the movement of the thumb.
+    left: (-$width / 2);
+    width: $width;
+    height: $height;
+    border-radius: max($width, $height);
+}
+
+ks-slider {
+    height: $ks-slider-thickness;
+    min-width: $ks-slider-min-size;
+    position: relative;
+    padding: 0;
+    display: inline-block;
+    outline: none;
+    vertical-align: middle;
+}
+
+ks-slider *,
+ks-slider *::after {
+    box-sizing: border-box;
+}
+
+.ks-slider-wrapper {
+    width: 100%;
+    height: 100%;
+    padding-left: $ks-slider-padding;
+    padding-right: $ks-slider-padding;
+}
+
+.ks-slider-container {
+    position: relative;
+}
+
+.ks-slider-track-container {
+    width: 100%;
+    position: absolute;
+    //top: center-vertically($ks-slider-thickness, $ks-slider-track-height);
+    top: 16px;
+    height: $ks-slider-track-height;
+}
+
+.ks-slider-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-color: rgba(117, 117, 117, 0.26);
+}
+
+.ks-slider-track-fill {
+    transition-duration: $swift-ease-out-duration;
+    transition-timing-function: $swift-ease-out-timing-function;
+    transition-property: width, height;
+    background-color: #11C966;
+}
+
+.ks-slider-tick-container,
+.ks-slider-last-tick-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+}
+
+.ks-slider-thumb-container {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    transition-duration: $swift-ease-out-duration;
+    transition-timing-function: $swift-ease-out-timing-function;
+    transition-property: left, bottom;
+}
+
+.ks-slider-thumb-position {
+    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+.ks-slider-thumb {
+    z-index: 1;
+    @include slider-thumb-position($ks-slider-thumb-size, $ks-slider-thumb-size);
+    transform: scale($ks-slider-thumb-default-scale);
+    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
+    top: 10px !important;
+    left: -5px !important;
+}
+
+.ks-slider-thumb::after {
+    content: '';
+    position: absolute;
+    width: $ks-slider-thumb-size;
+    height: $ks-slider-thumb-size;
+    border-radius: max($ks-slider-thumb-size, $ks-slider-thumb-size);
+    // Separate border properties because, if you combine them into "border", it defaults to 'black'.
+    border-width: 3px;
+    border-style: solid;
+    transition: inherit;
+    background-color: #11C966;
+    border-color: #11C966;
+}
+
+.ks-slider-thumb-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    //left: -($ks-slider-thumb-label-size / 2);
+    left: -9px;
+    //top: $ks-slider-thumb-label-top;
+    top: -15px;
+    //width: $ks-slider-thumb-label-size;
+    width: 22px;
+    //height: $ks-slider-thumb-label-size;
+    height: 22px;
+    border-radius: 50%;
+    transform: scale(0.4) translate3d(0, (-$ks-slider-thumb-label-top + 10) / 0.4, 0) rotate(45deg);
+    transition: 300ms $swift-ease-in-out-timing-function;
+    transition-property: transform, border-radius;
+}
+
+.ks-slider-thumb-label {
+    background-color: #11C966;
+}
+
+.ks-slider-thumb-label-text {
+    z-index: 1;
+    font-size: 9px;
+    font-weight: 100;
+    opacity: 0;
+    transform: rotate(-45deg);
+    transition: opacity 300ms $swift-ease-in-out-timing-function;
+    color: white;
+}
+
+.ks-slider-container:not(.ks-slider-thumb-label-showing) .ks-slider-thumb-label {
+    display: none;
+}
+
+.ks-slider-active.ks-slider-thumb-label-showing .ks-slider-thumb {
+    transform: scale(0);
+}
+
+.ks-slider-sliding .ks-slider-thumb-position,
+.ks-slider-sliding .ks-slider-track-fill {
+    transition: none;
+    cursor: default;
+}
+
+.ks-slider-active .ks-slider-thumb {
+    transform: scale($ks-slider-thumb-focus-scale);
+}
+
+.ks-slider-active .ks-slider-thumb-label {
+    border-radius: 50% 50% 0;
+    transform: rotate(45deg);
+}
+
+.ks-slider-active .ks-slider-thumb-label-text {
+    opacity: 1;
+}

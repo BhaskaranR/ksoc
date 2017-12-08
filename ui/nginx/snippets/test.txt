@@ -1,0 +1,86 @@
+Hello World
+
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server ipv6only=on;
+	server_name sskez.com;
+
+	include /etc/nginx/snippets/letsencrypt.conf;
+
+	root /var/www/sskez;
+	index index.html;
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+
+ln -s /etc/nginx/sites-available/sskez.conf /etc/nginx/sites-enabled/sskez.conf
+
+certbot certonly --webroot --agree-tos --no-eff-email --email sasisugumar@gmail.com -w /var/www/letsencrypt -d sskez.com
+
+aws iam upload-server-certificate --server-certificate-name sskez \
+  --certificate-body file:///etc/letsencrypt/live/sskez.com/cert.pem --private-key file:///etc/letsencrypt/live/sskez.com/privkey.pem \
+  --certificate-chain file:///etc/letsencrypt/live/sskez.com/chain.pem
+
+
+## http://sskez.com redirects to https://sskez.com
+server {
+	listen 80;
+	listen [::]:80;
+	server_name sskez.com;
+
+	include /etc/nginx/snippets/letsencrypt.conf;
+
+	location / {
+		return 301 https://sskez.com$request_uri;
+	}
+}
+
+## http://www.sskez.com redirects to https://www.sskez.com
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server ipv6only=on;
+	server_name www.sskez.com;
+
+	include /etc/nginx/snippets/letsencrypt.conf;
+
+	location / {
+		return 301 https://www.sskez.com$request_uri;
+	}
+}
+
+## https://sskez.com redirects to https://www.sskez.com
+server {
+	listen 443 ssl http2;
+	listen [::]:443 ssl http2;
+    server_name sskez.com;
+
+	ssl_certificate /etc/letsencrypt/live/sskez.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/sskez.com/privkey.pem;
+	ssl_trusted_certificate /etc/letsencrypt/live/sskez.com/fullchain.pem;
+	include /etc/nginx/snippets/ssl.conf;
+
+	location / {
+		return 301 https://www.sskez.com$request_uri;
+	}
+
+}
+
+## Serves https://www.sskez.com
+server {
+	server_name www.sskez.com;
+	listen 443 ssl http2 default_server;
+	listen [::]:443 ssl http2 default_server ipv6only=on;
+
+	ssl_certificate /etc/letsencrypt/live/sskez.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/sskez.com/privkey.pem;
+	ssl_trusted_certificate /etc/letsencrypt/live/sskez.com/fullchain.pem;
+	include /etc/nginx/snippets/ssl.conf;
+
+	root /var/www/sskez;
+	index index.html;
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+

@@ -1,0 +1,15 @@
+<div *ngIf="state | async as state">
+
+    <div *ngIf="state.active" class="g-modal">
+
+        <div class="g-btn-close-container">
+            <div *ngIf="closeButton" class="g-btn-close" (click)="close()"></div>
+        </div>
+
+        <gallery-main [@popup] [state]="state" [config]="config"></gallery-main>
+
+        <div class="g-overlay" (click)="close()"></div>
+
+    </div>
+
+</div>

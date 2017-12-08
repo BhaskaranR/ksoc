@@ -1,0 +1,26 @@
+.settings_con-wrapper {
+    width: 40%;
+    margin: 0px auto;
+}
+
+.settings_con {
+    box-shadow: none!important;
+}
+
+.p-con {
+    margin: 0px;
+}
+
+.settings_subtitle {
+    display: inline;
+}
+
+.Learn-more-btn {
+    width: 40%;
+    margin: 0px auto;
+}
+
+#setting_page {
+    position: fixed;
+    height: calc(92vh - 1px);
+}

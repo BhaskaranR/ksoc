@@ -1,0 +1,42 @@
+:host {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+}
+
+.demo-tab-group {
+    border: 1px solid #e8e8e8;
+    .unicorn-dark-theme & {
+        border-color: #464646;
+    }
+}
+
+mat-tab-label {
+    height: 48px!important;
+}
+
+.mat-tab-label {
+    height: 48px!important;
+}
+
+mat-sidenav-container {
+    min-height: 100vh;
+}
+button{
+    position: absolute;
+    /* margin: 1em; */
+}
+#post-item-dialogue
+{
+    width: 40%;
+    position: fixed;
+}
+@media screen and (max-width: 750px)
+{
+    #post-item-dialogue
+    {
+        width:95%;
+        position: fixed;
+    }  
+}

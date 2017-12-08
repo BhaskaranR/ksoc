@@ -1,0 +1,299 @@
+<div fxLayout="column" class="about_page" *ngIf="user$ | async; let user">
+    <div class="about_info_con-wrapper" fxLayoutAlign="space-around center">
+        <div class="about_info_con" fxFlex="65%" fxFlex.md="80%" fxFlex.sm="90%" fxFlex.xs="100%" fxLayout="column" fxLayoutGap="10px">
+            <mat-card class="cover_photo_con">
+                <div class="cover_photo_con_bg" mat-card-image style="background-image: url(user.image.normal);">
+                    <mat-icon (click)="uploadClick($event)" class="update_icon_1">photo_camera</mat-icon>
+                    <div class="image_icon_con-image" fxLayout="row" fxLayoutAlign="center center">
+                        <app-avatar fxFlexAlign="center" [user]="user" [canEdit]="true" [imageSize]="80" [showLetter]="true">
+                        </app-avatar>
+                        <!--img mat-card-avatar class="image_icon_con" src="https://lh3.googleusercontent.com/-feWckKvmys4/AAAAAAAAAAI/AAAAAAAAAOM/P0CFbUymX4U/s240-p-rw-no/photo.jpg"-->
+                    </div>
+                </div>
+
+                <mat-card-content>
+                    <mat-icon (click)="openUpdateImagePopup(user)" class="edit_profile_icon">create</mat-icon>
+                </mat-card-content>
+                <mat-card-content class="username_con">
+                    <mat-card-title class="username">
+                        {{user.firstName}} {{user.lastName}}
+                        <!-- <p>{{user.userCustomUrls | json }}</p> -->
+                    </mat-card-title>
+                </mat-card-content>
+            </mat-card>
+
+            <div class="info_wrapper" fxLayout.xs="column" fxLayout="row" fxLayoutGap="10px" fxFlex="100">
+                <div fxLayout="column" fxLayoutGap="10px" fxFlex="50">
+
+                    <mat-card class="cover_photo_con">
+                        <div fxlayout="row" fxLayoutAlign="space-between center">
+                            <mat-card-title class="info_title" fxFlex>Personal contact info</mat-card-title>
+                            <mat-icon class="create_icon" (click)="openProfileWorkContactInfoPopup(user.userPersonalContact)">create</mat-icon>
+                        </div>
+
+                        <mat-list *ngFor="let phone of user.userPersonalContact?.phonenumber">
+                            <mat-list-item class="usr_details">
+                                <mat-icon mat-list-icon class="info_list_icon">phone</mat-icon>
+                                <h4 mat-line>{{phone?.phoneNumber}}</h4>
+                                <p mat-line>{{phone?.phoneType}}</p>
+                            </mat-list-item>
+                        </mat-list>
+
+
+                        <mat-list *ngFor="let emails of user.userPersonalContact?.website">
+                            <mat-list-item class="usr_details">
+                                <mat-icon mat-list-icon class="info_list_icon">email</mat-icon>
+                                <h4 mat-line>{{emails?.email | lowercase}}</h4>
+                                <!-- <p mat-line>work</p> -->
+                            </mat-list-item>
+                        </mat-list>
+
+                        <mat-list *ngFor="let addresses of user.userPersonalContact?.address">
+                            <mat-list-item class="usr_details">
+                                <mat-icon mat-list-icon class="info_list_icon">room</mat-icon>
+                                <h4 mat-line>{{addresses?.address}}</h4>
+                                <!-- <p mat-line>address</p> -->
+                            </mat-list-item>
+                        </mat-list>
+                        <hr style="margin-top: 1em;" />
+                        <mat-card-actions *ngIf="user.userPersonalContact?.address">
+                            <button class="action-footer-icon" mat-icon-button [matMenuTriggerFor]="menu">
+                              <mat-icon>{{displayOptions[user.userPersonalContact?.visibility]?.icon || 'public'}}</mat-icon>
+                              <span>{{displayOptions[user.userPersonalContact?.visibility]?.name || 'Public'}}</span>
+                           </button>
+                            <mat-menu #menu="matMenu">
+                                <h6 style="padding:1em;">Who can see this?</h6>
+                                <div *ngFor="let option of options">
+                                    <button mat-menu-item (click)="updateContactPrivacy(user, option)">
+                                      <mat-icon>{{option.icon}}</mat-icon>
+                                    <span>{{option.name}}</span>
+                                </button>
+                                </div>
+                            </mat-menu>
+                        </mat-card-actions>
+                    </mat-card>
+
+                    <mat-card class="cover_photo_con" style="padding-bottom: 1em;">
+                        <div fxlayout="row" fxLayoutAlign="space-between center">
+                            <mat-card-title class="info_title" fxFlex>Sites</mat-card-title>
+                            <mat-icon class="create_icon" (click)="openUpdateSiteUrlPopup(user.userCustomUrls)">create</mat-icon>
+                        </div>
+
+                        <mat-card-content class="des-con" style="padding: 5px;">
+                            <div fxlayout="row" fxLayoutAlign="space-between center">
+                                <mat-card-title class="des-con-title" fxFlex>Customised URLs</mat-card-title>
+                                <mat-card-actions>
+                                    <button class="action-footer-icon" mat-icon-button [matMenuTriggerFor]="sitemenu">
+                                        <mat-icon class="des-con-subtitle">{{displayOptions[user.userCustomUrls?.visibility]?.icon || 'public'}}</mat-icon>
+                                     </button>
+                                    <mat-menu #sitemenu="matMenu">
+                                        <h6 style="padding:1em;">Who can see this?</h6>
+                                        <div *ngFor="let option of options">
+                                            <button mat-menu-item (click)="updateSitePrivacy(user.userCustomUrls, option)">
+                                                <mat-icon>{{option.icon}}</mat-icon>
+                                              <span>{{option.name}}</span>
+                                          </button>
+                                        </div>
+                                    </mat-menu>
+                                </mat-card-actions>
+                            </div>
+                        </mat-card-content>
+
+                        <mat-card-content class="des-con" fxlayout="row" fxLayoutAlign="start center" *ngFor="let link of user?.userCustomUrls">
+                            <div>
+                                <mat-icon style="padding: 10px;">public</mat-icon>
+                            </div>
+                            <div class="page_url_edit">
+                                <mat-card-title fxFlex style="color:#000 !important;">{{link?.title}}</mat-card-title>
+                                <mat-card-subtitle class="des-con-subtitle">
+                                    <a href="{{link?.url}}">{{link.url}}</a>
+                                </mat-card-subtitle>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+
+                    <mat-card class="cover_photo_con" style="padding-bottom: 1em;">
+                        <div fxlayout="row" fxLayoutAlign="space-between center">
+                            <mat-card-title class="info_title" fxFlex>Places</mat-card-title>
+                            <mat-icon class="create_icon" (click)="openUpdatePlacePopup(user.userPlacesHistory)">create</mat-icon>
+                        </div>
+                        <mat-card-content class="des-con">
+                            <div *ngIf="user.userPlacesHistory?.currentPlace">
+                                <mat-card-title class="des-con-title" fxFlex>Currently</mat-card-title>
+                            </div>
+                            <mat-card-subtitle class="des-con-subtitle">{{user.userPlacesHistory?.currentPlace}}</mat-card-subtitle>
+                        </mat-card-content>
+                        <mat-card-content class="des-con">
+                            <div *ngIf="user.userPlacesHistory?.livedPlaces?.length >0 && user.userPlacesHistory?.livedPlaces[0].livedLocationName">
+                                <mat-card-title class="des-con-title" fxFlex>Previously</mat-card-title>
+                            </div>
+                            <mat-card-subtitle class="des-con-subtitle" *ngFor="let lived of user.userPlacesHistory?.livedPlaces">{{lived.livedLocationName}}</mat-card-subtitle>
+                        </mat-card-content>
+                        <hr style="margin-top: 1em;" />
+                        <mat-card-actions *ngIf="user.userPlacesHistory">
+                            <button class="action-footer-icon" mat-icon-button [matMenuTriggerFor]="menu2">
+                                    <mat-icon>{{displayOptions[user.userPlacesHistory?.visibility]?.icon  || 'public'}}</mat-icon>
+                                    <span>{{displayOptions[user.userPlacesHistory?.visibility]?.name  || 'Public'}}</span>
+                            </button>
+                        </mat-card-actions>
+                        <mat-menu #menu2="matMenu">
+                            <h6 style="padding:1em;">Who can see this?</h6>
+                            <div *ngFor="let option of options">
+                                <button mat-menu-item (click)="updatePlacesPrivacy(user.userPlacesHistory, option)">
+                                      <mat-icon>{{option.icon}}</mat-icon>
+                                    <span>{{option.name}}</span>
+                                </button>
+                            </div>
+                        </mat-menu>
+                    </mat-card>
+
+                    <mat-card class="cover_photo_con">
+                        <div fxlayout="row">
+                            <mat-card-title class="info_title" fxFlex>Your album archive</mat-card-title>
+                        </div>
+                        <mat-card-actions>
+                            <button mat-button>
+                               <mat-icon>public</mat-icon>
+                               <span style="color: rgba(0, 0, 0, 0.54) !important;">See All</span>
+                             </button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+                <div fxLayout="column" fxLayoutGap="10px" fxFlex="50">
+                    <mat-card class="cover_photo_con ">
+                        <div fxlayout="row" fxLayoutAlign="space-between center">
+                            <mat-card-title class="info_title" fxFlex>Education</mat-card-title>
+                            <mat-icon class="create_icon" (click)="openUpdateEducationPopup(user.userEducationHistory?.educationHistory)">create</mat-icon>
+                        </div>
+                        <mat-card-content class="des-con">
+                            <div *ngFor="let school of user.userEducationHistory?.educationHistory">
+                                <mat-card-title class="des-con-title">{{school?.schoolName}}</mat-card-title>
+                                <mat-card-subtitle class="des-con-subtitle">{{school?.major}}, {{school?.year}} - {{school.endyear}}</mat-card-subtitle>
+                                <mat-card-subtitle class="des-con-subtitle">{{school.description}}</mat-card-subtitle>
+                            </div>
+                        </mat-card-content>
+                        <!-- <mat-card-content class="des-con">
+                            <mat-card-title class="des-con-title">Collage</mat-card-title>
+                            <mat-card-subtitle class="des-con-subtitle">Collage Name</mat-card-subtitle>
+                            <mat-card-subtitle class="des-con-subtitle">Degree</mat-card-subtitle>
+                        </mat-card-content> -->
+
+                        <hr style="margin-top: 1em;" />
+                        <mat-card-actions *ngIf="user.userEducationHistory?.educationHistory">
+                            <button class="action-footer-icon" mat-icon-button [matMenuTriggerFor]="menu3">
+                                 <mat-icon>{{displayOptions[user.userEducationHistory?.visibility]?.icon  || 'public'}}</mat-icon>
+                                     <span>{{displayOptions[user.userEducationHistory?.visibility]?.name  || 'Public'}}</span>
+                                     </button>
+                        </mat-card-actions>
+                        <mat-menu #menu3="matMenu">
+                            <h6 style="padding:1em;">Who can see this?</h6>
+                            <div *ngFor="let option of options">
+                                <button mat-menu-item (click)="updateEducationPrivacy(user, option)">
+                                      <mat-icon>{{option.icon}}</mat-icon>
+                                    <span>{{option.name}}</span>
+                                </button>
+                            </div>
+                        </mat-menu>
+                    </mat-card>
+
+                    <mat-card class="cover_photo_con ">
+                        <div fxlayout="row" fxLayoutAlign="space-between center">
+                            <mat-card-title class="info_title" fxFlex>Work History</mat-card-title>
+                            <mat-icon class="create_icon" (click)="openProfileWorkHistoryPopup(user.userWorkHistory)">create</mat-icon>
+                        </div>
+
+                        <mat-card-content class="des-con" *ngFor="let work of user.userWorkHistory?.workHistory">
+                            <mat-card-title class="des-con-title">{{work.companyName}}</mat-card-title>
+                            <mat-card-subtitle class="des-con-subtitle">{{work.title}}</mat-card-subtitle>
+                            <mat-card-subtitle class="des-con-subtitle">{{work.startDate}} to {{work.endDate}}</mat-card-subtitle>
+
+                            <mat-card-subtitle class="des-con-subtitle">{{work.description}}</mat-card-subtitle>
+                        </mat-card-content>
+
+                        <hr style="margin-top: 1em;" />
+                        <mat-card-actions *ngIf="user.userWorkHistory">
+                            <button class="action-footer-icon" mat-icon-button [matMenuTriggerFor]="menu4">
+                                 <mat-icon>{{displayOptions[user.userWorkHistory?.visibility]?.icon || 'public'}}</mat-icon>
+                                    <span>{{displayOptions[user.userWorkHistory?.visibility]?.name  || 'Public'}}</span>
+
+                             </button>
+                        </mat-card-actions>
+                        <mat-menu #menu4="matMenu">
+                            <h6 style="padding:1em;">Who can see this?</h6>
+                            <div *ngFor="let option of options">
+                                <button mat-menu-item (click)="updateWorkPrivacy(user.userWorkHistory?.workHistory, option)">
+                                      <mat-icon>{{option.icon}}</mat-icon>
+                                    <span>{{option.name}}</span>
+                                </button>
+                            </div>
+                        </mat-menu>
+                    </mat-card>
+                    <mat-card class="cover_photo_con" style="padding-bottom: 1em;">
+                        <div fxlayout="row" fxLayoutAlign="space-between center">
+                            <mat-card-title class="info_title" fxFlex>Gender, date of birth and more</mat-card-title>
+                            <mat-icon class="create_icon" (click)="openUpdatePersonalInfoPopup(user.personalInfo)">create</mat-icon>
+                        </div>
+                        <mat-card-content class="des-con">
+                            <div fxlayout="row" fxLayoutAlign="space-between center">
+                                <mat-card-title class="des-con-title" fxFlex>Gender</mat-card-title>
+                                <mat-icon class="des-con-subtitle" [matMenuTriggerFor]="menu5">{{displayOptions[user.personalInfo?.genderPrivacy]?.icon || 'public'}}</mat-icon>
+                            </div>
+                            <mat-menu #menu5="matMenu">
+                                <h6 style="padding:1em;">Who can see this?</h6>
+                                <div *ngFor="let option of options">
+                                    <button mat-menu-item (click)="updatePersonalPrivacy(user.personalInfo, option, 'gender')">
+                                    <mat-icon>{{option.icon}}</mat-icon>
+                                  <span>{{option.name}}</span>
+                              </button>
+                                </div>
+                            </mat-menu>
+                            <mat-card-subtitle class="des-con-subtitle">{{user.personalInfo?.gender}}</mat-card-subtitle>
+                        </mat-card-content>
+                        <mat-card-content class="des-con">
+                            <div fxlayout="row" fxLayoutAlign="space-between center">
+                                <mat-card-title class="des-con-title" fxFlex>Birthday</mat-card-title>
+                                <mat-icon class="des-con-subtitle" [matMenuTriggerFor]="menu6">{{displayOptions[user.personalInfo?.birthdayPrivacy]?.icon || 'public'}}</mat-icon>
+                            </div>
+                            <mat-menu #menu6="matMenu">
+                                <h6 style="padding:1em;">Who can see this?</h6>
+                                <div *ngFor="let option of options">
+                                    <button mat-menu-item (click)="updatePersonalPrivacy(user.personalInfo, option, 'birthday')">
+                                    <mat-icon>{{option.icon}}</mat-icon>
+                                  <span>{{option.name}}</span>
+                              </button>
+                                </div>
+                            </mat-menu>
+                            <mat-card-subtitle class="des-con-subtitle">{{user.personalInfo?.birthday | date}}</mat-card-subtitle>
+                        </mat-card-content>
+
+                        <mat-card-content class="des-con">
+                            <div fxlayout="row" fxLayoutAlign="space-between center">
+                                <mat-card-title class="des-con-title" fxFlex>Occupation</mat-card-title>
+                                <mat-icon class="des-con-subtitle" [matMenuTriggerFor]="menu7">{{displayOptions[user.personalInfo?.occupationPrivacy]?.icon || 'public'}}</mat-icon>
+                            </div>
+                            <mat-menu #menu7="matMenu">
+                                <h6 style="padding:1em;">Who can see this?</h6>
+                                <div *ngFor="let option of options">
+                                    <button mat-menu-item (click)="updatePersonalPrivacy(user.personalInfo, option, 'occupation')">
+                                    <mat-icon>{{option.icon}}</mat-icon>
+                                  <span>{{option.name}}</span>
+                              </button>
+                                </div>
+                            </mat-menu>
+                            <mat-card-subtitle class="des-con-subtitle">{{user.personalInfo?.occupation}}</mat-card-subtitle>
+                        </mat-card-content>
+                    </mat-card>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div fxlayout="row" fxLayoutAlign="end center" style="position:fixed;right:5em;
+bottom:2em;">
+    <button mat-fab class="fab-bottom-right" matTooltip="Add Info" (click)="openUpdateAddInfoPopup()">
+        <mat-icon style="color:#fff;">add</mat-icon>
+</button>
+</div>
+<input type="file" #fileInput id="fileInput" ng2FileSelect [uploader]="uploader" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|images/*" />

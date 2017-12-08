@@ -1,0 +1,165 @@
+@import "../../../assets/styles/scss/components/social";
+:host {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+}
+.app-inner-content {
+    overflow: hidden !important;
+    position: absolute  !important;
+    width: 100%  !important
+}
+.post_home{
+    margin: auto;
+}
+nav{
+    margin-left: -4px;
+    margin-top: -0.8em;
+}
+.wrapper {
+    margin: 6px;
+}
+
+.mat-dialog-container.full-screen {
+    max-width: none;
+    width: 100vw;
+    height: 100vh;
+}
+
+.brick {
+    width: 200px;
+}
+
+.photocards {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.photocard-all {
+    width: 150px;
+    margin: 2px;
+    margin-bottom: 5px;
+    justify-content: center;
+}
+
+.photocard-xs {
+    width: 120px;
+    margin: 2px;
+    margin-bottom: 5px;
+    justify-content: center;
+}
+
+.readonlyPost {
+    cursor: text;
+    margin-left: 25px;
+    outline: none;
+}
+
+smd-bottom-nav-group {
+    &.smd-myCustomColor {
+        .smd-bottom-nav-actions {
+            background-color: #d3d3d3;
+            .smd-bottom-nav-action {
+                color: #000000;
+                &.smd-bottom-nav-active {
+                    color: #ffffff;
+                    background-color: #838383;
+                }
+            }
+        }
+    }
+}
+
+.mat-fab-bottom-right-xs {
+    bottom: 4rem!important;
+}
+
+mat-toolbar {
+    margin-top: 8px;
+    // background: #fff;
+}
+
+.mat-tab {
+    // color: #000;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: initial;
+    text-transform: uppercase;
+}
+
+#tab_grp_post {
+    margin-top: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    margin-left: -4px;
+}
+
+.mat-tab-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+// #home_post{
+//     margin-top: 4.5em !important;
+//     height: calc(92vh - 1px) !important;
+//     position: fixed;
+//     position: fixed;
+// }
+.mat-sidenav-container
+{
+    min-height: 100vh !important;
+}
+.profile_view_all h6
+{
+    font-size: inherit;
+    padding-left: 0.5em;
+    padding-top: 4px;
+    cursor: pointer;
+}
+ng2-odometer
+{
+    font-size: x-large;
+    padding-top: 2px;
+    
+}
+mat-panel-title h6{
+    padding-top: 0.5em;
+    font-size: large;
+}
+mat-panel-description mat-icon
+{
+    padding-top: 7px;
+    padding-left: 5px;
+    color: #4CAF50;
+}
+mat-panel-description mat-list
+{
+    padding:5px;
+    cursor: pointer;
+}
+mat-panel-description hr
+{
+    padding-bottom: 5px;
+    margin-top: 5px;
+
+}
+mat-panel-description mat-list:hover{
+    background-color: rgba(0, 0, 0, 0.12);
+    outline: none;
+}
+@media screen and (max-width: 530px) {
+
+    .post_home{
+        margin: inherit !important;
+    }
+    .wrapper {
+        margin: 0 !important;
+    }
+    nav{
+        margin-left: -5px;
+        margin-top: -5px;
+        position: relative;
+        left: 4px;
+    }
+}

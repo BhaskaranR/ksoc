@@ -1,0 +1,91 @@
+<div class="points-div" fxLayout="column" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100">
+    <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+        <mat-card class="chart-div" fxLayout="row" fxLayoutAlign="center" fxFlex="70">
+            <div fxFlex>
+                <mat-card-title>WOWPOINTS REWARD IN THE LAST 12 MONTHS</mat-card-title>
+                <mat-card-subtitle>ALL TRANSACTIONS</mat-card-subtitle>
+                <mat-card-content>
+                    <canvas height="200" baseChart class="chart" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+                </mat-card-content>
+            </div>
+            <div fxFlex>
+                <mat-card-title>WOWPoints 5</mat-card-title>
+                <mat-card-subtitle>Food & Wine</mat-card-subtitle>
+                <mat-card-content>
+                    <canvas height="230" baseChart class="chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [options]="doughnutOptions" [colors]="doughnutChartColors" [chartType]="doughnutChartType"></canvas>
+                </mat-card-content>
+            </div>
+        </mat-card>
+        <div fxFlex="30" fxLayout="column">
+            <mat-card class="points-star" fxLayout="column">
+                <h6>YOUR STATUS: 1 STAR</h6>
+                <div fxLayout="row">
+                    <mat-icon class="star-small">star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon class="star-big">star</mat-icon>
+                    <span>1</span>
+                </div>
+                <p>* 1 STAR STATUS EARNED IN 2017.</p>
+            </mat-card>
+            <mat-card class="points-details" fxLayout="column">
+                <h6>
+                    YOUR WOWPOINTS SUMMARY
+                </h6>
+                <mat-list [routerLink]="['/karmaPoints']" fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-list-item>
+                        Total WOW Points
+                    </mat-list-item>
+                    <mat-list-item>
+                        12345
+                    </mat-list-item>
+                </mat-list>
+                <mat-list [routerLink]="['/karmaPoints']" fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-list-item>
+                        Allocated
+                    </mat-list-item>
+                    <mat-list-item>
+                        (0)
+                    </mat-list-item>
+                </mat-list>
+                <mat-list [routerLink]="['/karmaPoints']" fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-list-item>
+                        Pending
+                    </mat-list-item>
+                    <mat-list-item>
+                        (0)
+                    </mat-list-item>
+                </mat-list>
+                <hr>
+                <mat-list [routerLink]="['/karmaPoints']" fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-list-item>
+                        Balence
+                    </mat-list-item>
+                    <mat-list-item>
+                        12345
+                    </mat-list-item>
+                </mat-list>
+            </mat-card>
+        </div>
+    </div>
+    <mat-card class="promo-div" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex="70" fxFlex.xs="100" fxFlex.sm="100">
+            <h4>
+                PROMO CODE
+            </h4>
+            <h6 style="font-size:14px;">
+                Have a special Bank of America Discount Program code? Enter it, here, to receive your WOWPoints, instantly!
+            </h6>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxFlex="30" fxFlex.xs="100" fxFlex.sm="100">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Code" required>
+            </mat-form-field>
+            <div>
+                <button mat-raised-button color="primary" class="push-top-sm" type="submit">Enter Code</button>
+            </div>
+        </div>
+    </mat-card>
+</div>

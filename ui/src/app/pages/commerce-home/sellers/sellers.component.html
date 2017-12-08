@@ -1,0 +1,32 @@
+<div fxLayout="row" fxLayoutWrap="wrap" style="margin:1em 1em 1em 1em;">
+    <div class="ecommerce-item " fxFlex.gt-md="25" fxFlex.xs="50" fxFlex.sm="33.33" fxFlex.md="25" fxFlex="100">
+        <div mat-card-widget class="mat-card">
+            <div class="pl-0" fxLayoutAlign="center center" style="padding-top: 2em;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/14/Walmart_Spark.svg/722px-Walmart_Spark.svg.png">
+            </div>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                <div class="text-xl" fxLayout="row" fxLayoutAlign="space-between center">
+                    <span class="mat-text-proname "> Joust Duffle Bag</span>
+                    <span class="mat-text"> $ 27</span>
+                </div>
+                <div class="text-xl">
+                    <span class="mat-text-free"> Free</span>
+                    <span class="mat-text-muted text-md">delivery over $35</span>
+                </div>
+                <div>
+                    <span class="mat-text-free-by"> Buy tomorrow</span>
+                </div>
+                <div class="text-xl">
+                    <p class="ma-0 details-text mat-text-muted">
+                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+                    </p>
+                </div>
+            </mat-card-content>
+            <div fxLayout="row" fxLayoutAlign="center center" class="btn-cart">
+                <button mat-raised-button class="mat-text-muted" (click)="addToCart()">
+                      ADD TO CART
+                    </button>
+            </div>
+        </div>
+    </div>
+</div>

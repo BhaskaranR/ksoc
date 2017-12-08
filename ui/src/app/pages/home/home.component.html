@@ -1,0 +1,84 @@
+<div class="sidenav-area" [ngClass]="{'app-dark': dark, 'boxed': boxed, 'collapsed-sidebar': collapseSidebar, 'compact-sidebar': compactSidebar}">
+    <mat-toolbar *ngIf="me$ | async; let me" class="main-header" color="primary">
+        <button mat-icon-button (click)="togglesidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+        <div *ngIf="showtitle()" class="branding">
+            <!-- <h1>Karmasoc</h1> -->
+            <div class="logo-ks-home">
+                <img src="/assets/images/logo-white.png">
+            </div>
+        </div>
+        <div class="search-bar" fxFlex style="margin-top: 0.5em;">
+            <form class="search-form" fxShow="false" fxShow.gt-xs>
+              <mat-icon>search</mat-icon>
+              <input type="text" placeholder="Search" autofocus="true" />
+            </form>
+          </div>
+        <span fxFlex></span>
+        <!--ng2-odometer *ngIf="showOdometer()" [number]="12345" [config]="{ }"></ng2-odometer>
+        <button *ngIf="showOdometer()" (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible"
+        <mat-icon>notifications</mat-icon>
+        <span class="notification-label">5</span>
+        </button-->
+
+        <app-avatar style="margin-top: 8px;" [mat-menu-trigger-for]="user" [user]="me$ | async" [canEdit]="false" [imageSize]="30" [showLetter]="true"></app-avatar>
+
+        <button mat-icon-button (click)="showSettings = true">
+      <mat-icon>settings_application</mat-icon>
+    </button>
+        <!--button [mat-menu-trigger-for]="user" mat-icon-button class="ml-xs">
+            <mat-icon>person</mat-icon>
+        </button-->
+
+        <mat-menu #user="matMenu" x-position="before">
+            <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        Settings
+      </button>
+            <button mat-menu-item>
+        <mat-icon>account_box</mat-icon>
+        Profile
+      </button>
+            <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        Disable notifications
+      </button>
+            <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Sign Out
+      </button>
+        </mat-menu>
+    </mat-toolbar>
+    <mat-sidenav-container style="margin-top:0 !important;">
+        <mat-sidenav #sidemenu [mode]="isOver() ? 'over' : 'side'" [opened]="isOpen" [fixedInViewport]="fixed" [fixedTopGap]="fixedTop" [fixedBottomGap]="fixedBottom" (mouseover)="menuMouseOver()" (mouseout)="menuMouseOut()">
+            <sidenav></sidenav>
+        </mat-sidenav>
+        <mat-sidenav-content cdk-scrollable>
+            <router-outlet #routerOutlet="outlet"></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <mat-card class="settings-panel" *ngIf="showSettings">
+        <mat-toolbar color="warn">
+            <span fxFlex>Options</span>
+            <button mat-icon-button (click)="showSettings = false">
+        <mat-icon>close</mat-icon>
+      </button>
+        </mat-toolbar>
+        <mat-card-content class="demo-checkbox">
+            <div class="pb-1">
+                <mat-checkbox [(ngModel)]="collapseSidebar" (change)="compactSidebar = false" [align]="end">Collapsed Sidebar</mat-checkbox>
+            </div>
+            <div class="pb-1">
+                <mat-checkbox [(ngModel)]="compactSidebar" (change)="collapseSidebar = false" [align]="end">Compact Sidebar</mat-checkbox>
+            </div>
+            <div class="pb-1">
+                <mat-checkbox [(ngModel)]="boxed" [align]="end">Boxed Layout</mat-checkbox>
+            </div>
+            <div class="pb-1">
+                <mat-checkbox [(ngModel)]="dark" [align]="end">Dark Mode</mat-checkbox>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

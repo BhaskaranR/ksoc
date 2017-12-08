@@ -1,0 +1,47 @@
+{
+  "name": "@accounts/graphql-client",
+  "version": "0.2.3",
+  "description": "GraphQL client transport for accounts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "start": "tsc --watch",
+    "compile": "tsc",
+    "test": "yarn testonly",
+    "test-ci": "yarn coverage",
+    "testonly": "jest",
+    "coverage": "yarn testonly -- --coverage",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/../../node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "mapCoverage": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/js-accounts/graphql.git"
+  },
+  "author": "David Yahalomi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/js-accounts/graphql/issues"
+  },
+  "homepage": "https://github.com/js-accounts/graphql#readme",
+  "devDependencies": {
+    "coveralls": "^2.11.14",
+    "jest": "^18.0.0",
+    "lodash": "^4.16.4",
+    "nock": "^9.0.2"
+  },
+  "dependencies": {
+    "@accounts/common": "0.1.0-alpha.58382c10",
+    "graphql-tag": "^1.1.2"
+  }
+}

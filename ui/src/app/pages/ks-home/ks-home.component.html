@@ -1,0 +1,48 @@
+<div class="containerX">
+    <div class="colorNested box" fxLayout="column">
+        <div parallax [config]="{
+                parallaxInitVal: 50,
+                parallaxRatio: .26}" class="ks-home-image" fxLayout="column">
+            <!-- <img src="https://curesearch.org/wp-content/uploads/news-banner-background.jpg" alt=""> -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+                <!-- <h1 class="ks-home-title">Karmasoc</h1> -->
+                <img src="/assets/images/logo-black.png">
+                <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 3em;">
+                    <button class="btn-signup" color="primary" mat-raised-button (click)="openLogin()">
+            Log In
+        </button>
+                    <button class="btn-signup" color="accent" mat-raised-button (click)="openSignup()">
+            Sign Up
+        </button>
+                </div>
+            </div>
+        </div>
+        <mat-tab-group fxFlex [(selectedIndex)]="activeTabIndex" color="primary">
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <p class="mat-tab">Photos</p>
+                </ng-template>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <p class="mat-tab">Videos</p>
+                </ng-template>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <p class="mat-tab">Fun</p>
+                </ng-template>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <p class="mat-tab">Learn</p>
+                </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+        <div style="width:100%">
+            <!--router-outlet></router-outlet-->
+        </div>
+        <app-footer>
+        </app-footer>
+    </div>
+</div>

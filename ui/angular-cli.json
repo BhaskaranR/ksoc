@@ -1,0 +1,75 @@
+{
+    "project": {
+        "version": "1.0.0-beta.15",
+        "name": "karmasoc-web"
+    },
+    "apps": [{
+        "root": "src",
+        "outDir": "dist",
+        "assets": [
+            { "glob": "sheet_apple_32.png", "input": "../node_modules/angular2-emoji-picker/sheets/", "output": "./" },
+            "assets",
+            "favicon.ico",
+            "manifest.json",
+            {
+                "glob": "workbox-sw.dev.v2.0.0.js",
+                "input": "../node_modules/workbox-sw/build/importScripts/",
+                "output": "./"
+            },
+            {
+                "glob": "workbox-routing.dev.v2.0.0.js",
+                "input": "../node_modules/workbox-routing/build/importScripts/",
+                "output": "./"
+            },
+            {
+                "glob": "workbox-runtime-caching.dev.v2.0.0.js",
+                "input": "../node_modules/workbox-runtime-caching/build/importScripts/",
+                "output": "./"
+            },
+            {
+                "glob": "workbox-cacheable-response.dev.v2.0.0.js",
+                "input": "../node_modules/workbox-cacheable-response/build/importScripts/",
+                "output": "./"
+            },
+            {
+                "glob": "workbox-background-sync.dev.v2.0.0.js",
+                "input": "../node_modules/workbox-background-sync/build/importScripts/",
+                "output": "./"
+            }
+        ],
+        "index": "index.html",
+        "main": "main.ts",
+        "test": "test.ts",
+        "tsconfig": "tsconfig.json",
+        "prefix": "app",
+        "mobile": false,
+        "styles": [
+            "assets/styles/app.scss",
+            "../node_modules/videogular2/fonts/videogular.css"
+        ],
+        "scripts": [
+            "../node_modules/moment/min/moment.min.js"
+        ],
+        "environmentSource": "environments/environment.ts",
+        "environments": {
+            "dev": "environments/environment.ts",
+            "prod": "environments/environment.prod.ts"
+        }
+    }],
+    "addons": [],
+    "packages": [],
+    "e2e": {
+        "protractor": {
+            "config": "./protractor.conf.js"
+        }
+    },
+    "test": {
+        "karma": {
+            "config": "./karma.conf.js"
+        }
+    },
+    "defaults": {
+        "styleExt": "css",
+        "prefixInterfaces": false
+    }
+}

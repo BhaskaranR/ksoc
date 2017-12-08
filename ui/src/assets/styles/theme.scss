@@ -1,0 +1,25 @@
+@import '~@angular/material/_theming';
+@include mat-core();
+$primary: mat-palette($mat-red);
+$accent: mat-palette($mat-blue);
+$theme: mat-light-theme($primary, $accent);
+@include angular-material-theme($theme);
+@mixin footer-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    app-footer {
+        .docs-footer-links a {
+            color: mat-color($primary, default-contrast);
+        }
+    }
+}
+
+.dark-theme {
+    $dark-primary: mat-palette($mat-light-blue);
+    $dark-accent: mat-palette($mat-green);
+    $dark-theme: mat-dark-theme($dark-primary, $dark-accent);
+    @include angular-material-theme($dark-theme);
+}

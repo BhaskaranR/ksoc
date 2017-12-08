@@ -1,0 +1,1 @@
+export { MatGestureConfig } from './md-gesture-config';

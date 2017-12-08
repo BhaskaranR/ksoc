@@ -1,0 +1,23 @@
+<div class="g-container" [style.flexDirection]="thumbDirection">
+
+    <gallery-thumb *ngIf="config.thumbnails" [state]="state" (next)="setNext($event)" (prev)="setPrev($event)" [config]="config.thumbnails"></gallery-thumb>
+
+    <div class="g-box">
+
+        <div class="g-image-box">
+
+            <gallery-image [state]="state" [config]="config" (loading)="loading = $event"></gallery-image>
+
+            <gallery-nav *ngIf="config.navigation" [state]="state" (next)="setNext($event)" (prev)="setPrev($event)"></gallery-nav>
+
+        </div>
+
+        <gallery-text *ngIf="config.description" [state]="state" [config]="config.description"></gallery-text>
+
+        <gallery-bullets *ngIf="config.bullets" [state]="state" [config]="config.bullets"></gallery-bullets>
+
+        <gallery-player *ngIf="config.player" [state]="state" (play)="setPlay($event)" [config]="config.player"></gallery-player>
+
+    </div>
+
+</div>

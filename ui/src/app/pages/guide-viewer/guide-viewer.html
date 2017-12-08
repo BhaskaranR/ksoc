@@ -1,0 +1,74 @@
+<mat-toolbar class="main-header" color="primary">
+    <div class="branding">
+        <div class="logo-ks-home">
+            <img class="hide" src="/assets/images/logo-white.png">
+            <img class="show" src="/assets/images/logo-icon.png">
+        </div>
+    </div>
+    <div class="search-bar" fxFlex>
+        <form class="search-form" fxShow="false" fxShow.gt-xs>
+            <mat-icon>search</mat-icon>
+            <input type="text" placeholder="Search" autofocus="true" />
+        </form>
+    </div>
+    <span fxFlex></span>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button class="btn-signup" color="primary" mat-raised-button>
+    Log In
+</button>
+        <button class="btn-signup" color="accent" mat-raised-button>
+    Sign Up
+</button>
+    </div>
+    <button mat-icon-button (click)="showSettings = true">
+      <mat-icon>settings_application</mat-icon>
+    </button>
+    <!--button [mat-menu-trigger-for]="user" mat-icon-button class="ml-xs">
+            <mat-icon>person</mat-icon>
+        </button-->
+
+    <mat-menu #user="matMenu" x-position="before">
+        <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        Settings
+      </button>
+        <button mat-menu-item>
+        <mat-icon>account_box</mat-icon>
+        Profile
+      </button>
+        <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        Disable notifications
+      </button>
+
+    </mat-menu>
+</mat-toolbar>
+<div class="docs-primary-header">
+    <h1>{{guide.name}}</h1>
+</div>
+<div class="docs-guide-wrapper">
+    <div class="docs-guide-toc-and-content">
+        <doc-viewer class="docs-guide-content" (contentLoaded)="toc.updateScrollPosition()" [documentUrl]="guide.document"></doc-viewer>
+        <table-of-contents #toc></table-of-contents>
+    </div>
+</div>
+<footer>
+    <div _ngcontent-c3="" class="docs-footer-list">
+        <div _ngcontent-c3="" class="docs-footer-links">
+            <ul _ngcontent-c3="">
+                <li _ngcontent-c3=""><a _ngcontent-c3="" rel="noopener">Help Center | </a></li>
+                <li _ngcontent-c3=""><a _ngcontent-c3="" rel="noopener">Blog | </a></li>
+                <li _ngcontent-c3=""><a _ngcontent-c3="" rel="noopener">Terms | </a></li>
+                <li _ngcontent-c3=""><a _ngcontent-c3="" rel="noopener">Privacy Policy | </a></li>
+                <li _ngcontent-c3=""><a _ngcontent-c3="" rel="noopener">Cookies | </a></li>
+                <li _ngcontent-c3=""><a _ngcontent-c3="" rel="noopener">Ads info | </a></li>
+                <li _ngcontent-c3=""><a _ngcontent-c3="" rel="noopener">Advertise | </a></li>
+                <li _ngcontent-c3=""><a _ngcontent-c3="" rel="noopener">Businesses</a></li>
+            </ul>
+        </div>
+        <div _ngcontent-c3="" class="docs-footer-copyright">
+            <p _ngcontent-c3="">Copyright Karmasoc ©2017.</p>
+        </div>
+    </div>
+
+</footer>

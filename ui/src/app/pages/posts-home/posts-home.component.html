@@ -1,0 +1,125 @@
+<div class="wrapper">
+    <nav mat-tab-nav-bar fxLayoutAlign="start center" aria-label="feeds">
+        <div fxLayoutAlign="center center">
+            <a mat-tab-link [routerLink]="tabLink.link" routerLinkActive #rla="routerLinkActive" md-stretch-tabs [active]="rla.isActive" *ngFor="let tabLink of tabLinks; let i = index">
+                          {{tabLink.label}}
+                </a>
+        </div>
+    </nav>
+    <div class="wrapper">
+        <div class="post_home" fxLayout="row" fxLayoutWrap="wrap" fxFlex.gt-sm="nogrow" fxFlex="90" fxFlex.xs="100">
+            <div fxFlex.sm="100" fxFlex.xs="100">
+                <div fxLayout="column">
+                    <mat-card *ngIf="showSideBlocks" (click)="openNewPostDialog()">
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <div class="readonlyPost" fxLayoutGap="20px"><span role="button">What's new with you?</span></div>
+                            <span fxFlex></span>
+                            <button mat-icon-button>
+                                              <mat-icon>insert_photo</mat-icon>
+                                          </button>
+                            <button mat-icon-button>
+                                              <mat-icon>location_on</mat-icon>
+                                          </button>
+                        </div>
+                    </mat-card>
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+            <div fxFlex.gt-sm="40" fxFlex="100" fxLayout="column" fxLayoutWrap="wrap" *ngIf="showSideBlocks">
+                <mat-card>
+                    <div fxLayout="column" fxLayoutWrap="wrap" style="padding-top: 1em;padding-left: 5px;">
+                        <div fxLayout="row">
+                            <div>
+                                <mat-icon style="padding-left: 0.4em; color: #4CAF50;">
+                                    group_add
+                                </mat-icon>
+                            </div>
+                            <div class="profile_view_all">
+                                <h6 (click)="openInviteFriendsDialog()">
+                                    Invite your friends to follow this Page</h6>
+                            </div>
+                        </div>
+                        <mat-expansion-panel style="margin: 1em;">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <h6>User Name</h6>
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    <ng2-odometer [number]="12345" [config]="{ }"></ng2-odometer>
+                                    <mat-icon>star</mat-icon>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <mat-panel-description fxLayout="column">
+                                <mat-list [routerLink]="['/karmaPoints']" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <mat-list-item>
+                                        Total WOW Points
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        12345
+                                    </mat-list-item>
+                                </mat-list>
+                                <mat-list [routerLink]="['/karmaPoints']" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <mat-list-item>
+                                        Allocated
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        (0)
+                                    </mat-list-item>
+                                </mat-list>
+                                <mat-list [routerLink]="['/karmaPoints']" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <mat-list-item>
+                                        Pending
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        (0)
+                                    </mat-list-item>
+                                </mat-list>
+                                <hr>
+                                <mat-list [routerLink]="['/karmaPoints']" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <mat-list-item>
+                                        Total
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        12345
+                                    </mat-list-item>
+                                </mat-list>
+                            </mat-panel-description>
+                        </mat-expansion-panel>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="space-between center" style="padding-top: 1em;padding-left: 5px;">
+                        <div>
+                            <h6 class="profile_name">Paulson Ps</h6>
+                        </div>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="space-between center" style="padding-top: 1em;padding-left: 5px;">
+                        <div>
+                            <h6 class="profile_name">Recommended Friends</h6>
+                        </div>
+                        <div class="profile_view_all">
+                            <h6>See More</h6>
+                        </div>
+                    </div>
+                </mat-card>
+
+                <mat-card>
+                    <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="space-between center" style="padding-top: 1em;padding-left: 5px;">
+                        <div>
+                            <h6 class="profile_name">Friends Request</h6>
+                        </div>
+                        <div class="profile_view_all">
+                            <h6>See More</h6>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--button mat-fab (click)="openNewPostDialog()" class.sm="mat-fab-bottom-right mat-fab-bottom-right-xs" class.xs=" mat-fab-bottom-right mat-fab-bottom-right-xs" class="mat-fab-bottom-right">
+        <mat-icon class="mat-24">edit</mat-icon>
+</button-->

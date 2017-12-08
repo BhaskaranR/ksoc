@@ -1,0 +1,119 @@
+type Coordinates {
+    lat: String
+    long: String
+}
+
+type GeoTag {
+    type: String
+    coordinates: Coordinates
+    title: String
+    placeId: String
+}
+
+type PhotoUrl {
+    xlarge: String
+    large: String
+    normal: String
+    small: String
+}
+
+enum AccessType {
+    public
+    private
+    friends
+}
+
+type LikeByPost {
+    userId: String
+    like: String
+}
+
+enum Bookmark {
+    mypage
+    fun
+    learn
+}
+
+
+type BookMarkPost {
+    userId: String
+    bookMark: Bookmark
+}
+
+type PhotoDetailsDb {
+    ext: String
+    xlarge: String
+    large: String
+    normal: String
+    small: String
+}
+
+type FileDetails {
+    id: String
+    ext: String
+    thumbnail: PhotoDetailsDb
+}
+
+type Post {
+    id: ID!
+    title: String
+    text: String
+    mentions: [String]
+    geotag: GeoTag
+    photos: [PhotoDetails]
+    withFriends: [String]
+    postType: String
+    access: AccessType
+    userId: String
+    shares: [String]
+    likes: [LikeByPost]
+    bookmarks: [BookMarkPost]
+    fileUrl: [FileDetails]
+    comments: [Comment]
+    create_date: String
+    modified_date: String
+}
+
+enum FeedType {
+    Home
+    Gallery
+    Videos
+    TrendingVideos
+    TrendingPhotos
+    MyFun
+    MyLearn
+    MyPage
+    MyFriendsFun
+    MyFriendsLearn
+    MyFriendsPage
+    MyProfilePage
+}
+
+enum ViewType {
+    Feed
+    Gallery
+}
+
+type Query {
+    posts(feedType: FeedType, userId: String, offset: Int, limit: Int): [Post]
+}
+
+input File {
+    type: String!,
+    path: String!,
+}
+
+
+type Mutation {
+    createPost(post: Post, file: File): Boolean!
+    editPost(post: Post): Boolean!
+    deletePost(postId: string): Boolean!
+    favorPost(postId: string, like: like): Observable<Favorites>;
+    unFavorPost(postId: string, like: like): Observable<Favorites>;
+    toggleFavor(postId: string, like: like): Observable<Favorites>;
+    postImpression(postId: string, impression: Impression): Observable<Impression>;
+    editImpression(impression: Impression): Observable<Impression>;
+    deleteImpression(impressionId: string): Observable<boolean>;
+    bookMarkPost(post: number, bookMark: Bookmark[]): Observable<Post>;
+    sharePost(post: SharePost): Observable<Post>;
+}

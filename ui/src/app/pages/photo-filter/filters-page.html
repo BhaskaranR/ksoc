@@ -1,0 +1,122 @@
+<div fxLayout="column">
+    <div fxLayout="column" class="filter_photo_upload" fxLayoutAlign="center center">
+        <div class="filter_header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+                <h6>Edit Photo</h6>
+            </div>
+            <div>
+                <button mat-icon-button mat-dialog-close>
+                        <mat-icon>close</mat-icon>
+                    </button>
+            </div>
+        </div>
+        <photo [loading]="filters.loading$ | async" [overlay]="filters.overlayStyle$ | async" [filter]="filters.filterStyle$ | async" [image]="filters.selectedImage$ | async">
+        </photo>
+        <div *ngIf="selectedIndex === 1" fxLayout="row" class="filter_gallery" fxLayoutAlign="center center">
+            <h6>Crop</h6>
+        </div>
+        <div class="filter_items" *ngIf="selectedIndex === 2" fxLayout="row">
+            <gallery [image]="filters.selectedImage$ | async" [active]="!isActive" [customFilters]="customFilters" [loading]="filters.loading$ | async" (onSelect)="select($event)">
+            </gallery>
+        </div>
+        <div *ngIf="selectedIndex === 3" fxLayout="column" style="width: 100%;height:120px;">
+            <div fxLayout="row">
+                <div class="pl-1 pr-1 pb-1">
+                    <p class="slider-value">Contrast {{ filters.contrast$ | async }}%</p>
+                    <ks-slider [thumb-label]="'true'" [min]="'0'" [max]="'200'" [filterType]="'contrast'" [value]="filters.contrast$ | async" (valueChange)="change($event)">
+                    </ks-slider>
+                </div>
+                <div class="pl-1 pr-1 pb-1">
+                    <p class="slider-value">Brightness {{ filters.brightness$ | async }}%</p>
+                    <ks-slider [thumb-label]="'true'" [min]="'0'" [max]="'200'" [filterType]="'brightness'" [value]="filters.brightness$ | async" (valueChange)="change($event)">
+                    </ks-slider>
+                </div>
+                <div class="pl-1 pr-1 pb-1">
+                    <p class="slider-value">Saturate {{ filters.saturate$ | async }}%</p>
+                    <ks-slider [thumb-label]="'true'" [min]="'0'" [max]="'200'" [filterType]="'saturate'" [value]="filters.saturate$ | async" (valueChange)="change($event)">
+                    </ks-slider>
+                </div>
+                <div class="pl-1 pr-1 pb-1">
+                    <p class="slider-value">Blur {{ filters.blur$ | async }}%</p>
+                    <ks-slider [thumb-label]="'true'" [min]="'0'" [max]="'10'" [filterType]="'hueRotate'" [value]="filters.blur$ | async" (valueChange)="change($event)">
+                    </ks-slider>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div class="pl-1 pr-1 pb-1">
+                    <p class="slider-value">Sepia {{ filters.sepia$ | async }}%</p>
+                    <ks-slider [thumb-label]="'true'" [min]="'0'" [max]="'100'" [filterType]="'sepia'" [value]="filters.sepia$ | async" (valueChange)="change($event)">
+                    </ks-slider>
+                </div>
+                <div class="pl-1 pr-1 pb-1">
+                    <p class="slider-value">Grayscale {{ filters.grayscale$ | async }}%</p>
+                    <ks-slider [thumb-label]="'true'" [min]="'0'" [max]="'100'" [filterType]="'grayscale'" [value]="filters.grayscale$ | async" (valueChange)="change($event)">
+                    </ks-slider>
+                </div>
+                <div class="pl-1 pr-1 pb-1">
+                    <p class="slider-value">Invert {{ filters.invert$ | async }}%</p>
+                    <ks-slider [thumb-label]="'true'" [min]="'0'" [max]="'100'" [filterType]="'invert'" [value]="filters.invert$ | async" (valueChange)="change($event)">
+                    </ks-slider>
+                </div>
+                <div class="pl-1 pr-1 pb-1">
+                    <p class="slider-value">Hue Rotate {{ filters.hueRotate$ | async }}%</p>
+                    <ks-slider [thumb-label]="'true'" [min]="'0'" [max]="'360'" [filterType]="'hueRotate'" [value]="filters.hueRotate$ | async" (valueChange)="change($event)">
+                    </ks-slider>
+                </div>
+            </div>
+            <!-- <div fxLayout="row">
+                    <div class="pl-1 pr-1 pb-1">
+                        <h6>Overlay</h6>
+                        <mat-radio-group [name]="'overlay_options'" [value]="filters.blend$ | async">
+                            <mat-radio-button *ngFor="let option of options" [name]="'overlay_options'" [value]="option.val" (change)="change($event)">
+                                {{ option.label }}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div> -->
+        </div>
+    </div>
+    <div class="filter_options" fxLayout="row">
+        <div class="filter_click" (click)="showDiv(1)" fxLayout="column" fxLayoutAlign="center center">
+            <button mat-icon-button>
+                    <mat-icon class="mat-48 icon_filter">
+                        crop
+                    </mat-icon>
+                </button>
+            <p>Crop</p>
+        </div>
+        <div class="filter_click" (click)="showDiv(2)" fxLayout="column" fxLayoutAlign="center center">
+            <button mat-icon-button>
+                    <mat-icon  class="mat-48 icon_filter">
+                        filter_tilt_shift
+                    </mat-icon>
+                </button>
+            <p>Filter</p>
+        </div>
+        <div class="filter_click" (click)="showDiv(3)" fxLayout="column" fxLayoutAlign="center center">
+            <button mat-icon-button>
+                    <mat-icon class="mat-48 icon_filter">
+                            tune
+                    </mat-icon>
+                </button>
+            <p>Adjust</p>
+        </div>
+        <!-- <div class="filter_click" (click)="showDiv(4)">
+                <button mat-icon-button>
+                    <mat-icon  class="mat-48 icon_filter">
+                        filter_tilt_shift
+                    </mat-icon>
+                </button>
+            </div> -->
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" style="padding:1em;">
+        <div>
+            <button class="btn-primary" mat-button>Delete</button>
+        </div>
+        <div></div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <button class="btn-cancel" mat-button>Change Photo</button>
+            <button class="btn-primary" (click)="applyFilter()" mat-button>Apply</button>
+        </div>
+    </div>
+</div>

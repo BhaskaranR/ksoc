@@ -1,0 +1,6 @@
+<!--div [@imgAnimate]="animate" class="g-image">
+    <img mat-card-image [lazyImage]="state.images[state.currIndex].src" (lazyLoad)="imageLoad($event)">
+</div-->
+<img mat-card-image [lazyImage]="state.images[state.currIndex].src" (lazyLoad)="imageLoad($event)">
+
+<gallery-loader *ngIf="loading" [config]="config.loader"></gallery-loader>

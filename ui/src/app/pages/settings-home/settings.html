@@ -1,0 +1,148 @@
+<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+    <div fxFlex.gt-sm="55" fxFlex="100">
+        <mat-card class="mat-card-top">
+            <mat-tab-group>
+                <mat-tab>
+                    <ng-template mat-tab-label>Preferences</ng-template>
+                    <mat-card-title>General</mat-card-title>
+                    <mat-card-content>
+                        <p fxFlexLayout="row">
+                            <mat-card-subtitle class="settings_subtitle">Who can send me notification</mat-card-subtitle>
+                            <span fxFlex></span>
+                            <mat-select fxFlexAlign="end" [(ngModel)]="notifyposts" #notifyControl="ngModel">
+                                <mat-option *ngFor="let circle of circles" [value]="circle.value" [disabled]="circle.disabled">
+                                    {{ circle.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </p>
+                        <p fxFlexLayout="row">
+                            <mat-card-subtitle class="settings_subtitle">Who can comment on my post</mat-card-subtitle>
+                            <span fxFlex></span>
+                            <mat-select fxFlexAlign="end" [(ngModel)]="commentposts" #notifyControl="ngModel">
+                                <mat-option *ngFor="let circle of circles" [value]="circle.value" [disabled]="circle.disabled">
+                                    {{ circle.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </p>
+                        <p fxFlexLayout="row">
+                            <mat-card-subtitle class="settings_subtitle">Who can see likes on my posts</mat-card-subtitle>
+                            <span fxFlex></span>
+                            <mat-select fxFlexAlign="end" [(ngModel)]="listposts" #notifyControl="ngModel">
+                                <mat-option *ngFor="let circle of circles" [value]="circle.value" [disabled]="circle.disabled">
+                                    {{ circle.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </p>
+                    </mat-card-content>
+
+                    <hr>
+                    <mat-card-title>Profile</mat-card-title>
+                    <mat-card-content>
+                        <p fxFlexLayout="row">
+                            <mat-card-subtitle class="settings_subtitle">Who can see my profile</mat-card-subtitle>
+                            <span fxFlex></span>
+                            <mat-select fxFlexAlign="end" [(ngModel)]="profile" #notifyControl="ngModel">
+                                <mat-option *ngFor="let circle of circles" [value]="circle.value" [disabled]="circle.disabled">
+                                    {{ circle.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </p>
+                    </mat-card-content>
+                    <mat-card-content>
+                        <p fxFlexLayout="row">
+                            <mat-card-subtitle class="settings_subtitle">Who can see my following</mat-card-subtitle>
+                            <span fxFlex></span>
+                            <mat-select fxFlexAlign="end" [(ngModel)]="following" #notifyControl="ngModel">
+                                <mat-option *ngFor="let circle of circles" [value]="circle.value" [disabled]="circle.disabled">
+                                    {{ circle.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </p>
+                    </mat-card-content>
+                    <hr>
+                    <mat-card-title>Notifications</mat-card-title>
+                    <mat-card-content>
+                        <p fxFlexLayout="row">
+                            <mat-card-subtitle class="settings_subtitle">Would you like to enable push notifications</mat-card-subtitle>
+                            <span fxFlex></span>
+                            <mat-slide-toggle fxFlexAlign="end" [(ngModel)]="enablenotifications"></mat-slide-toggle>
+                        </p>
+                    </mat-card-content>
+
+                    <hr>
+                    <mat-card-title>Email</mat-card-title>
+                    <mat-card-content>
+                        <p fxFlexLayout="row">
+                            <mat-card-subtitle class="settings_subtitle">
+                                Occasional updates about Karmasoc activity</mat-card-subtitle>
+                            <span fxFlex></span>
+                            <mat-slide-toggle fxFlexAlign="end" [(ngModel)]="enableemail"></mat-slide-toggle>
+                        </p>
+                    </mat-card-content>
+                    <hr>
+                    <mat-card-title>Account</mat-card-title>
+                    <mat-card-content>
+                        <p fxFlexLayout="row">
+                            Delete your Ksoc account
+                        </p>
+                    </mat-card-content>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>Security</ng-template>
+                    <form [formGroup]="form" (ngSubmit)="changepassword($event)" #changepasswordform="ngForm">
+                        <mat-card-title>Change password</mat-card-title>
+                        <mat-card-content fxLayout="column">
+                            <mat-form-field class="mb-1">
+                                <input matInput placeholder="Old password" formControlName="old_password" type="password">
+                                <mat-error *ngIf="form.controls.old_password.hasError('required')">
+                                    Old password is required
+                                </mat-error>
+
+                                <mat-error *ngIf="form.controls.old_password.hasError('minlength')">
+                                    Enter atleast 5 or more characters
+                                </mat-error>
+                                <mat-error *ngIf="form.controls.old_password.hasError('maxlength')">
+                                    Enter upto 32 character
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="mb-1">
+                                <input matInput formControlName="new_password" placeholder="New password" type="password">
+                                <!--ng2-password-strength-bar [passwordToCheck]="new_password" [barLabel]="barLabel">
+                                    </ng2-password-strength-bar-->
+                                <mat-error *ngIf="form.controls.new_password.hasError('required')">
+                                    New password is required
+                                </mat-error>
+                                <mat-error *ngIf="form.controls.new_password.hasError('minlength')">
+                                    Enter atleast 5 or more characters
+                                </mat-error>
+
+                                <mat-error *ngIf="form.controls.new_password.hasError('maxlength')">
+                                    Enter upto 32 character
+                                </mat-error>
+
+                            </mat-form-field>
+
+                            <mat-form-field class="mb-1">
+                                <input matInput formControlName="confirm_password" placeholder="Confirm new password" type="password">
+                                <mat-error *ngIf="form.controls.confirm_password.hasError('required')">
+                                    Confirm New password is required
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-error *ngIf="form.controls.confirm_password.errors?.MatchPassword">
+                                Password doesnot match
+                            </mat-error>
+
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-raised-button type="submit" class="shadow-none">Save</button>
+                            <button mat-raised-button color="primary">Cancel</button>
+                        </mat-card-actions>
+                    </form>
+                </mat-tab>
+
+            </mat-tab-group>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+<div class="g-container" *ngIf="state | async as state" [ngStyle]="config.style">
+    <thumb [state]="state" [config]="config" (next)="next()" (prev)="prev()" [style.background]="config.style?.background"></thumb>
+    <thumbnail-nav [state]="state" (next)="next()" (prev)="prev()" [state]="state"></thumbnail-nav>
+</div>

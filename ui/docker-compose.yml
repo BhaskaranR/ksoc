@@ -1,0 +1,11 @@
+version: '2'
+services:
+   karmasoc-nginx:
+        image: "karmasocio/karmasoc-web"
+        build:
+            context: .
+            dockerfile: Dockerfile.karmasocweb
+        ports:
+          - "80:8080"
+        environment:
+            FILELOGLEVEL: error

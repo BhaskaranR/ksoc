@@ -1,0 +1,35 @@
+.product-detail-header h1{
+  font-size: 2em;
+}
+.product-detail-header h4{
+  font-size: 1em;
+  text-transform: capitalize;
+  line-height: 2;
+}
+.strikethrough {
+  text-decoration: line-through;
+}
+.icon-star md-icon{
+  font-size: initial;
+  padding-top: 4px;
+}
+.customer-review {
+  img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 1em;
+  }
+  div{
+    padding-top: 1em;
+  }
+  h3{
+    font-size: 16px
+  }
+  mat-icon{
+    font-size: 20px;
+  }
+  p{
+    font-size: 14px;
+  }
+}

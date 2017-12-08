@@ -1,0 +1,11 @@
+<mat-card fxFill>
+    <mat-card-actions>
+        <button mat-icon-button (click)="isGalleryView = true">
+                    <mat-icon>view_module</mat-icon>
+                </button>
+        <button mat-icon-button (click)="isGalleryView = false">
+                    <mat-icon>view_list</mat-icon>
+                </button>
+    </mat-card-actions>
+</mat-card>
+<app-video-list [isGalleryView]=isGalleryView [videos]=sources></app-video-list>

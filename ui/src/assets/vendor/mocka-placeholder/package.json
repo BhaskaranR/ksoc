@@ -1,0 +1,95 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "mocka-placeholder",
+        "scope": null,
+        "escapedName": "mocka-placeholder",
+        "name": "mocka-placeholder",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/bhaskarferrari/Documents/bckp/karmasoc-web"
+    ]
+  ],
+  "_from": "mocka-placeholder@latest",
+  "_id": "mocka-placeholder@1.0.2",
+  "_inCache": true,
+  "_location": "/mocka-placeholder",
+  "_nodeVersion": "4.2.6",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/mocka-placeholder-1.0.2.tgz_1495797860915_0.7036741306073964"
+  },
+  "_npmUser": {
+    "name": "chalarangelo",
+    "email": "chalarangelo@gmail.com"
+  },
+  "_npmVersion": "3.5.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "mocka-placeholder",
+    "scope": null,
+    "escapedName": "mocka-placeholder",
+    "name": "mocka-placeholder",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mocka-placeholder/-/mocka-placeholder-1.0.2.tgz",
+  "_shasum": "e5276d4b01bf4f6a30de767c54e0179a3b89a9bc",
+  "_shrinkwrap": null,
+  "_spec": "mocka-placeholder",
+  "_where": "/Users/bhaskarferrari/Documents/bckp/karmasoc-web",
+  "author": {
+    "name": "Angelos Chalaris",
+    "url": "Chalarangelo"
+  },
+  "bugs": {
+    "url": "https://github.com/Chalarangelo/mocka/issues"
+  },
+  "dependencies": {},
+  "description": "Simple, elegant content placeholder",
+  "devDependencies": {
+    "node-sass": "^4.5.2"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "dist": {
+    "shasum": "e5276d4b01bf4f6a30de767c54e0179a3b89a9bc",
+    "tarball": "https://registry.npmjs.org/mocka-placeholder/-/mocka-placeholder-1.0.2.tgz"
+  },
+  "gitHead": "5827f20a25d2067a1d2c71eada4bdb3089690ccc",
+  "homepage": "https://chalarangelo.github.io/mocka/",
+  "keywords": [
+    "css",
+    "sass",
+    "placeholder",
+    "mocka"
+  ],
+  "license": "MIT",
+  "main": "dist/mocka.min.css",
+  "maintainers": [
+    {
+      "name": "chalarangelo",
+      "email": "chalarangelo@gmail.com"
+    }
+  ],
+  "name": "mocka-placeholder",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chalarangelo/mocka.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.2"
+}

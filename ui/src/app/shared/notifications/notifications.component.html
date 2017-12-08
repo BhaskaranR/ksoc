@@ -1,0 +1,130 @@
+<mat-sidenav class="app-inner-sidenav  sidebar-panel" #end align="end" class="chat-panel" mode="over" opened="false">
+    <mat-tab-group [selectedIndex]="1" mat-stretch-tabs>
+        <mat-tab>
+            <ng-template mat-tab-label>Today</ng-template>
+            <div class="scroll">
+                <mat-list class="pt-1 pb-1">
+                    <mat-list-item>
+                        <div fxLayout="column">
+                            <h2 class="ma-0">{{ today | date:'EEEE' }}</h2>
+                            <h6 class="mat-text-muted ma-0"><span>{{ today | date:'dd' }}</span>&nbsp;<span>{{ today | date:'MMMM' }}</span></h6>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+                <mat-nav-list>
+                    <mat-divider></mat-divider>
+                    <h3 mat-subheader class="text-uppercase font-weight-bold">Stocks</h3>
+                    <mat-list-item>
+                        <a mat-line href="javascript:;">NASDAQ</a>
+                        <span class="mat-text-muted text-md mr-xs ml-xs">4,492.87</span>
+                        <span>-0.29%</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a mat-line href="javascript:;">NYSE</a>
+                        <span class="mat-text-muted text-md mr-xs ml-xs">10,692.07</span>
+                        <span>-0.53%</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a mat-line href=javascript:;>DOW J</a>
+                        <span class="mat-text-muted text-md mr-xs ml-xs">17,046.81</span>
+                        <span>-0.14%</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a mat-line href="javascript:;">APPL</a>
+                        <span class="mat-text-muted text-md mr-xs ml-xs">100,89</span>
+                        <span>+0.75%</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <h3 mat-subheader class="text-uppercase font-weight-bold">Weather</h3>
+                    <mat-list-item>
+                        <a mat-line href="javascript:;">{{ today | date:'shortTime' }}</a>
+                        <p mat-line class="mat-text-muted">London</p>
+                        <span class="h4 pe-is-w-blizzard mr-1"></span>
+                        <span class="h4">26°</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <h3 mat-subheader class="text-uppercase font-weight-bold">Todo</h3>
+                    <mat-list-item>
+                        <a mat-line href="javascript:;">Learn Angular 2.0</a>
+                        <p mat-line class="mat-text-muted text-md">2:45PM</p>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a mat-line href="javascript:;">Learn Angular Material</a>
+                        <p mat-line class="mat-text-muted text-md">3:20PM</p>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a mat-line href="javascript:;">Write documentation</a>
+                        <p mat-line class="mat-text-muted text-md">6:00PM</p>
+                    </mat-list-item>
+                    <mat-divider class="mt-xs mb-xs"></mat-divider>
+                    <h3 mat-subheader class="text-uppercase font-weight-bold">Stats</h3>
+                    <mat-list-item>
+                        <p class="text-md" mat-line>Local Storage (4023 / 10690)</p>
+                        <mat-progress-bar mat-line mode="determinate" color="warn" value="40"></mat-progress-bar>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <p class="text-md" mat-line>Cloud Storage (700 / 1030)</p>
+                        <mat-progress-bar mat-line mode="determinate" color="accent" value="70"></mat-progress-bar>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <p class="text-md" mat-line>Local Storage (20 / 100)</p>
+                        <mat-progress-bar mat-line mode="determinate" value="20"></mat-progress-bar>
+                    </mat-list-item>
+                </mat-nav-list>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>Notifications</ng-template>
+            <div class="scroll">
+                <mat-nav-list>
+                    <mat-list-item>
+                        <mat-icon mat-list-avatar class="mat-text-primary">people</mat-icon>
+                        <h4 mat-line>Social</h4>
+                        <p mat-line>Ligula Purus Adipiscing</p>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-avatar class="mat-text-warn">local_offer</mat-icon>
+                        <h4 mat-line>Promotions</h4>
+                        <p mat-line>Etiam Ligula Dapibus</p>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-avatar class="mat-text-accent">info</mat-icon>
+                        <h4 mat-line>Updates</h4>
+                        <p mat-line>Sollicitudin Euismod Fringilla</p>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <mat-icon mat-list-avatar class="mat-indigo">delete_sweep</mat-icon>
+                        <h4 mat-line>Removed 6 items from task list</h4>
+                        <span class="text-md mat-text-muted" mat-line>{{ 1427207139000 | date: 'fullDate' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-avatar>check_circle</mat-icon>
+                        <h4 mat-line>Completed 2 projects</h4>
+                        <span class="text-md mat-text-muted" mat-line>{{ 1427412725000 | date: 'fullDate' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-avatar>notifications_paused</mat-icon>
+                        <h4 mat-line>Muted notifications</h4>
+                        <span class="text-md mat-text-muted" mat-line>{{ 1427546580000 | date: 'fullDate' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-avatar>person_add</mat-icon>
+                        <h4 mat-line>Added Joel to contact list</h4>
+                        <span class="text-md mat-text-muted" mat-line>{{ 1428275520000 | date: 'fullDate' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-avatar>phone_missed</mat-icon>
+                        <h4 mat-line>Missed live call from Ellie</h4>
+                        <span class="text-md mat-text-muted" mat-line>{{ 1428830580000 | date: 'fullDate' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-avatar>group_add</mat-icon>
+                        <h4 mat-line>You've been added to HR group</h4>
+                        <span class="text-md mat-text-muted" mat-line>{{ 1429363920000 | date: 'fullDate' }}</span>
+                    </mat-list-item>
+                </mat-nav-list>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</mat-sidenav>

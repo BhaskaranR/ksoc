@@ -1,0 +1,85 @@
+<!-- <h1 mat-dialog-title>
+    Have an account?
+</h1>
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <mat-form-field class="full-width">
+            <input matInput formControlName="mail" placeholder="Email" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput formControlName="password" type="password" placeholder="Password" required>
+        </mat-form-field>
+        <mat-card-actions layout="row" layout-align="end center">
+            <a (click)="dialogRef.close('signup')" style="float: left;margin:16px;text-decoration:none;color: #2196F3;">Sign Up</a>
+            <a style="float: right;margin: 16px;text-decoration:none;color: #2196F3;" [routerLink]="['/login/forgotpassword']">Forget Your Password ?</a>
+        </mat-card-actions>
+
+        <button type="submit" mat-raised-button color="primary">Login</button>
+    </form>
+
+    <button mat-raised-button color="accent"> 
+                <mat-icon class="side_nav_icon" svgIcon="avatars:facebook-box"></mat-icon>
+                Continue with FACEBOOK
+        </button>
+
+    <button mat-raised-button color="warn"> 
+                <mat-icon class="side_nav_icon" svgIcon="avatars:googleplus-box"></mat-icon>
+                Continue with GOOGLE+
+        </button>
+
+</mat-dialog-content> -->
+
+<section>
+    <article>
+        <mat-card-content class="text-center">
+            <div fxLayout="column" fxLayoutAlign="center center">
+                <img style="width:100px;" src="assets/images/icons/icon.png">
+                <p class="mat-text-muted">Sign in with your account to continue.</p>
+            </div>
+            <form novalidate 
+                  [formGroup]="form" 
+                  (ngSubmit)="onSubmit()" 
+                  #loginForm="ngForm">
+                <mat-form-field fxFlexFill>
+                    <input matInput 
+                           formControlName="mail" 
+                           placeholder="Email" 
+                           (blur)="displayEmailError=true"
+                           (focus)="displayEmailError=false"/>
+                </mat-form-field>
+ 
+                <small class="mat-text-warn" *ngIf="form.controls.mail.errors?.required && form.controls.mail.dirty && displayEmailError">
+                    Error! Email field is required
+                </small>
+
+                <small class="mat-text-warn" *ngIf="form.controls.mail.errors?.invalidEmail && form.controls.mail.dirty && displayEmailError">
+                    Error! Invalid email
+                </small>
+
+                <div class="push-top-sm">
+                    <mat-form-field fxFlexFill>
+                        <input matInput formControlName="password" type="password" placeholder="Password" required (focus)="displayPwError=false" (blur)="displayPwError=true">
+                    </mat-form-field>
+                </div>
+
+                <small class="mat-text-warn" *ngIf="form.controls.password.errors?.minlength && form.controls.password.dirty && displayPwError">
+                    Error! Password must be at least 6 characters!
+                </small>
+
+                <button mat-raised-button color="primary" class="push-top-sm" type="submit" [disabled]="form.invalid">LOGIN</button>
+            </form>
+            <button mat-raised-button color="accent"> 
+                    <mat-icon class="side_nav_icon" svgIcon="avatars:facebook-box"></mat-icon>
+                    Continue with FACEBOOK
+            </button>
+            <button mat-raised-button color="warn"> 
+                    <mat-icon class="side_nav_icon" svgIcon="avatars:googleplus-box"></mat-icon>
+                    Continue with GOOGLE+
+            </button>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="pt-1">
+                <a [routerLink]="['/login/forgotpassword']">Forgot password?</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="signup-text" (click)="dialogRef.close('signup')">Sign up for a new account.</a>
+            </div>
+        </mat-card-content>
+    </article>
+</section>
